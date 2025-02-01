@@ -1,17 +1,7 @@
 ---
 title: "Resource and Environmental Economics"
-format: 
-  revealjs:
-    code-overflow: scroll
-    view: scroll
-    scrollProgress: true
-    slide-number: c/t
-    footer: "Sem VI"
-editor_options: 
-  chunk_output_type: console
+format: revealjs
 ---
-
-
 
 ## Justification for studying REE.
 
