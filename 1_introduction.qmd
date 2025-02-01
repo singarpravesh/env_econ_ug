@@ -1,5 +1,5 @@
 ---
-title: "Resource and Environmental Economics"
+title: "Introduction to Resource Economics"
 format: revealjs
 ---
 
@@ -371,6 +371,13 @@ r &= \frac{(p_1 - mc_e)-(p_0 - mc_e)}{(p_0 - mc_e)}
 
 ---
 
+```{r, echo=FALSE, out.width="70%"}
+knitr::include_graphics("images/fig_1.png")
+```
+
+
+---
+
 - **Shift date**: the time at which the NRR gets exhausted.
 - Let us denote this as $T$.
 - The price path of the existing NRR at time $T$ is
@@ -378,16 +385,39 @@ r &= \frac{(p_1 - mc_e)-(p_0 - mc_e)}{(p_0 - mc_e)}
 $$
 p_T = mc_e + (p_0 - mc_e)(1 + r)^T ... (1)
 $$
+
+---
+
 - Since there is no user cost for backstop,
-$$
+
+
 \begin{align}
 p_T = mc_b \ldots (2)\\
 \text{where, } p_T:\text{price of the backstop}\\
 \\
 \text{From (1) and (2), we get}\\
 mc_b &= mc_e + (p_0 - mc_e)(1+r)^T\\
-p_0 - mc_e &= \frac{mc_b-mc_e}{(1+r)^T}
+p_0 - mc_e &= \frac{mc_b-mc_e}{(1+r)^T}\\
+\implies p_0 &= mc_e + \frac{mc_b - mc_e}{(1+r)^{T-0}}\\
+\implies p_1 &= mc_e + \frac{mc_b - mc_e}{(1+r)^{T-1}}\\
+\vdots \quad &= \qquad  \vdots \qquad \vdots \\
+\implies p_t &= mc_e + \frac{mc_b - mc_e}{(1+r)^{T-t}}; \forall t<T \\
+
 \end{align}
-$$
+
 
 ---
+
+\begin{align}
+
+ p_t &= mc_e + \frac{mc_b - mc_e}{(1+r)^{T-t}}; \forall t<T \\
+
+\end{align}
+
+
+- Insights:
+  - Marginal costs of extraction for the backstop ($mc_b$) determines the price path of the existing resource at $t$.
+  - If $mc_b$ is high i.e. the possibility of harvesting the backstop is low, then $p_t$ will also be high and viceversa.
+  - $mc_b$ sets an upper limit on the price of an existing resource at time period $t$.
+
+

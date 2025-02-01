@@ -10,7 +10,7 @@
 <link href="1_introduction_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.555">
 
-  <title>Resource and Environmental Economics</title>
+  <title>Introduction to Resource Economics</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -325,7 +325,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Resource and Environmental Economics</h1>
+  <h1 class="title">Introduction to Resource Economics</h1>
 
 <div class="quarto-title-authors">
 </div>
@@ -537,6 +537,10 @@ r &amp;= \frac{(p_1 - mc_e)-(p_0 - mc_e)}{(p_0 - mc_e)}
 </section>
 <section class="slide level2">
 
+
+<img data-src="images/fig_1.png" style="width:70.0%" class="r-stretch"></section>
+<section class="slide level2">
+
 <ul>
 <li><strong>Shift date</strong>: the time at which the NRR gets exhausted.</li>
 <li>Let us denote this as <span class="math inline">\(T\)</span>.</li>
@@ -544,19 +548,42 @@ r &amp;= \frac{(p_1 - mc_e)-(p_0 - mc_e)}{(p_0 - mc_e)}
 </ul>
 <p><span class="math display">\[
 p_T = mc_e + (p_0 - mc_e)(1 + r)^T ... (1)
-\]</span> - Since there is no user cost for backstop, <span class="math display">\[
-\begin{align}
+\]</span></p>
+</section>
+<section class="slide level2">
+
+<ul>
+<li>Since there is no user cost for backstop,</li>
+</ul>
+<p><span class="math display">\[\begin{align}
 p_T = mc_b \ldots (2)\\
 \text{where, } p_T:\text{price of the backstop}\\
 \\
 \text{From (1) and (2), we get}\\
 mc_b &amp;= mc_e + (p_0 - mc_e)(1+r)^T\\
-p_0 - mc_e &amp;= \frac{mc_b-mc_e}{(1+r)^T}
-\end{align}
-\]</span></p>
+p_0 - mc_e &amp;= \frac{mc_b-mc_e}{(1+r)^T}\\
+\implies p_0 &amp;= mc_e + \frac{mc_b - mc_e}{(1+r)^{T-0}}\\
+\implies p_1 &amp;= mc_e + \frac{mc_b - mc_e}{(1+r)^{T-1}}\\
+\vdots \quad &amp;= \qquad  \vdots \qquad \vdots \\
+\implies p_t &amp;= mc_e + \frac{mc_b - mc_e}{(1+r)^{T-t}}; \forall t&lt;T \\
+
+\end{align}\]</span></p>
 </section>
 <section class="slide level2">
 
+<p><span class="math display">\[\begin{align}
+
+p_t &amp;= mc_e + \frac{mc_b - mc_e}{(1+r)^{T-t}}; \forall t&lt;T \\
+
+\end{align}\]</span></p>
+<ul>
+<li>Insights:
+<ul>
+<li>Marginal costs of extraction for the backstop (<span class="math inline">\(mc_b\)</span>) determines the price path of the existing resource at <span class="math inline">\(t\)</span>.</li>
+<li>If <span class="math inline">\(mc_b\)</span> is high i.e.&nbsp;the possibility of harvesting the backstop is low, then <span class="math inline">\(p_t\)</span> will also be high and viceversa.</li>
+<li><span class="math inline">\(mc_b\)</span> sets an upper limit on the price of an existing resource at time period <span class="math inline">\(t\)</span>.</li>
+</ul></li>
+</ul>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
