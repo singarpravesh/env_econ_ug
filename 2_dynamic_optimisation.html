@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="1_introduction_files/libs/clipboard/clipboard.min.js"></script>
-<script src="1_introduction_files/libs/quarto-html/tabby.min.js"></script>
-<script src="1_introduction_files/libs/quarto-html/popper.min.js"></script>
-<script src="1_introduction_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="1_introduction_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="1_introduction_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="1_introduction_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="1_introduction_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="2_dynamic_optimisation_files/libs/clipboard/clipboard.min.js"></script>
+<script src="2_dynamic_optimisation_files/libs/quarto-html/tabby.min.js"></script>
+<script src="2_dynamic_optimisation_files/libs/quarto-html/popper.min.js"></script>
+<script src="2_dynamic_optimisation_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="2_dynamic_optimisation_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="2_dynamic_optimisation_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="2_dynamic_optimisation_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="2_dynamic_optimisation_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.555">
 
-  <title>Introduction to Resource Economics</title>
+  <title>Dynamic Optimization</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="1_introduction_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="1_introduction_files/libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="2_dynamic_optimisation_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="2_dynamic_optimisation_files/libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -29,11 +29,11 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="1_introduction_files/libs/revealjs/dist/theme/quarto.css">
-  <link href="1_introduction_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="1_introduction_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="1_introduction_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="1_introduction_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link rel="stylesheet" href="2_dynamic_optimisation_files/libs/revealjs/dist/theme/quarto.css">
+  <link href="2_dynamic_optimisation_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="2_dynamic_optimisation_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="2_dynamic_optimisation_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="2_dynamic_optimisation_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
   .callout {
@@ -325,238 +325,63 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Introduction to Resource Economics</h1>
+  <h1 class="title">Dynamic Optimization</h1>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
-<section id="justification-for-studying-ree." class="slide level2">
-<h2>Justification for studying REE.</h2>
+<section id="why-are-we-even-discussing-dynamic-optimization-do" class="slide level2">
+<h2>Why are we even discussing Dynamic Optimization (DO)?</h2>
 <ul>
-<li>Economics is about allocating resources efficiently.</li>
-<li>To our understanding “environment” is also a scarce resource.</li>
+<li>We’ve talked about the price path of NRR.</li>
+<li>We’ve also see that as <span class="math inline">\(t \to \infty, \ p_t \not \to \infty\)</span> because of the availability of backstop.</li>
+<li>However, until such a backstop becomes available, we need to determine the <strong>optimal time path of the price</strong> of the existing NRR.</li>
+<li>This is done by optimising the resource use along the time <span class="math inline">\(t \to T\)</span>.</li>
+<li>For this we need <strong>dynamic optimisation</strong>, for static optimisation does not work here.</li>
 </ul>
 </section>
-<section id="what-do-we-mean-by-environment" class="slide level2">
-<h2>What do we mean by “environment”</h2>
+<section id="difference-between-do-and-so." class="slide level2">
+<h2>Difference between DO and SO.</h2>
+<ul>
+<li>Static Optimisation</li>
+</ul>
+<p><span class="math display">\[\begin{align}
+\text{max }u &amp;= u(X,Y)\\
+\text{s.t. } P_x.X + P_y.Y &amp;= I\\
+\text{where; }X \ \text{and}\ Y&amp;: \text{are goods}\\
+I &amp;: \text{income}\\
+X^* \ , \ Y^*&amp;: \text{Solution to the optimization problem} \\
+&amp;\quad\text{at a specific time period}
+\end{align}\]</span></p>
+</section>
+<section class="slide level2">
 
-<img data-src="1_introduction_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
-<section id="definition-of-natural-resource" class="slide level2">
-<h2>Definition of natural resource</h2>
 <ul>
-<li><p>Naturally occurring resources which can be made available for mankind under feasible <strong>social</strong>, <strong>economic</strong>, and <strong>technological</strong> framework.- Can we classify sea water as a natural resource?</p></li>
-<li><p>Two types:</p>
+<li>Dynamic Optimisation
 <ul>
-<li>Renewable Resources: Generating capacity - forests, fishery, solar energy, etc.</li>
-<li>Non-renewable resources: No generating capacity over an economically feasible time horizon - coal, oil, etc.</li>
+<li>Objective is to maximise lifetime utility by optimising our consumption of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> at each time period.</li>
+<li>E.g. over our lifetime we can decide on how much to consume, save, invest, etc. to optimise our life.</li>
 </ul></li>
 </ul>
 </section>
 <section class="slide level2">
 
 <ul>
-<li>Do renewable resources also get exhausted?
-<ul>
-<li>Yes, if the rate of extraction <span class="math inline">\(&gt;\)</span> the rate of growth.</li>
-</ul></li>
-<li>Are we exhausting our nonrenewable resources too rapidly or too slowly?
-<ul>
-<li><strong>Optimal rate of extraction</strong>: The rate of extraction that maximises that inter-temporal benefits derived from such non-renewable resources.</li>
-</ul></li>
+<li>E.g. the Indian economy is deciding on optimum investment in each period for 5 years so that at the end of the <span class="math inline">\(5^th\)</span> year, the objective of accumulating a certain level of capital stock is realised. The cost should be minimum.</li>
 </ul>
 </section>
-<section class="slide level2">
-
-<ul>
-<li>Example: 1000 kg of coal to be used over 10 years.</li>
-</ul>
-
-<img data-src="1_introduction_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
-<section id="natural-resources-as-an-open-set" class="slide level2">
-<h2>Natural resources as an open set</h2>
-
-<img data-src="1_introduction_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"><ul>
-<li>Added: Uranium</li>
-<li>Eliminated: Extinct species of flora and fauna.</li>
-</ul>
-</section>
-<section id="the-optimal-path" class="slide level2">
-<h2>The optimal path</h2>
-<ul>
-<li>What should be the optimal path (<em>if we join the points we get a path</em>) of extraction for a non-renewable resource (NRR)?</li>
-<li>For market goods
-<ul>
-<li><span class="math inline">\(p = mc\)</span>, <span class="math inline">\(p\)</span>- price , <span class="math inline">\(mc\)</span>- marginal cost</li>
-</ul></li>
-</ul>
-</section>
-<section class="slide level2">
-
-
-<img data-src="1_introduction_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
-<section class="slide level2">
-
-<ul>
-<li>Can we apply <code>p = mc</code> for a NRR?
-<ul>
-<li>No, NRR are not easily replicable <span class="math inline">\(\rightarrow\)</span> today’s production/extraction has some opportunity cost as the <em>same resource is not available for tomorrow.</em></li>
-</ul></li>
-</ul>
-</section>
-<section class="slide level2">
-
-<ul>
-<li>In this situation we have an additional (opportunity) cost.</li>
-</ul>
-
-<img data-src="1_introduction_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"><p><span class="math inline">\(p = mc_e + mu_c\)</span> where; - <span class="math inline">\(mc_e:\)</span> marginal cost of extraction - <span class="math inline">\(mu_c:\)</span> marginal user cost</p>
-</section>
-<section class="slide level2">
-
-<ul>
-<li>Let us assume we have some amount of NRR which we are going to use in 2 periods;
-<ul>
-<li><span class="math inline">\(0: 1^{st} \text{period}\)</span></li>
-<li><span class="math inline">\(1: \text{last period}\)</span></li>
-<li><span class="math inline">\(p_0: \text{price at } t_0\)</span></li>
-<li><span class="math inline">\(p_1: \text{price at } t_1\)</span></li>
-</ul></li>
-<li>The resource owner has to decide <strong>whether to use the resource today or keep it for tomorrow</strong>.
-<ul>
-<li><span class="math inline">\(p_0 - mc_e\)</span>: Today’s benefit</li>
-<li><span class="math inline">\(p_1 - mc_e\)</span>: Tomorrow’s benefit (if the resource is left for tomorrow)</li>
-</ul></li>
-</ul>
-</section>
-<section class="slide level2">
-
-<ul>
-<li>At <span class="math inline">\(t_0\)</span>, the owner has to convert tomorrow’s benefit to today’s benefit.</li>
-<li>This benefit is given by <span class="math display">\[
-\frac{p_1 - mc_e}{1 + r}
-\]</span></li>
-</ul>
-<p>where <span class="math inline">\(r\)</span> is the rate of interest or the discount rate.</p>
-</section>
-<section id="section" class="slide level2 incremental">
+<section id="section" class="slide level2 smaller">
 <h2></h2>
-<ul>
-<li>We are converting tomorrow’s benefit to today’s benefit by discounting <em>and the discount rate is <span class="math inline">\(r\)</span></em>.</li>
-<li>If <span class="math inline">\((p_0 - mc_e) &gt; \frac{(p_1 - mc_e)}{1 + r}\)</span> <span class="math inline">\(\implies\)</span> the resource owner should use it today. The RHS is also called the <strong>discounted benefit</strong>.</li>
-<li>If <span class="math inline">\((p_0 - mc_e) &lt; \frac{(p_1 - mc_e)}{1 + r}\)</span> <span class="math inline">\(\implies\)</span> the resource owner should use it tomorrow.</li>
-<li>If <span class="math inline">\((p_0 - mc_e) = \frac{(p_1 - mc_e)}{1 + r}\)</span> <span class="math inline">\(\implies\)</span> the resource owner is indifferent between today’s use and tomorrow’s.</li>
-</ul>
-</section>
-<section class="slide level2">
 
-<ul>
-<li><span class="math inline">\((p_0 - mc_e) = \frac{(p_1 - mc_e)}{1 + r}\)</span> is called the equilibrium condition.</li>
-<li><span class="math inline">\(p_0 = mc_e + \frac{(p_1 - mc_e)}{1 + r}\)</span></li>
-<li>Since the marginal cost pricing is not applicable for NRR, an additional opportunity cost was added to <span class="math inline">\(mc_e\)</span>.</li>
-<li>This component of cost is known as the marginal user cost (muc) where <span class="math inline">\(mu_c = \frac{(p_1 - mc_e)}{1 + r}\)</span></li>
-<li><span class="math inline">\(mc_e + mu_c = \text{augmented marginal cost}\)</span></li>
-<li>If the <span class="math inline">\(mu_c\)</span> is not added to the <span class="math inline">\(mc_e\)</span> then the NRR may not be available for extraction tomorrow.</li>
-</ul>
-</section>
-<section class="slide level2">
-
-<p><span class="math display">\[\begin{align}
-\because p_0 &amp;= mc_e + \frac{(p_1 - mc_e)}{1 + r}\\
-p_1 &amp;= mc_e + (p_0 - mc_e)(1 + r) \\
-p_2 &amp;= mc_e + (p_0 - mc_e)(1 + r)^2\\
-\text{In general we can write};\\
-p_t &amp;= mc_e + (p_0 - mc_e)(1 + r)^t\\
+<img data-src="images/do_state_stage_1.png" width="302" class="r-stretch"><p><span class="math display">\[\begin{align}
+(0,A) &amp;: \text{initial state of the economy}\\
+(T,Z) &amp;: \text{terminal state of the economy}\\
+0 &amp;: \text{initial time}\\
+T &amp;: \text{terminal time}\\
+A &amp;: \text{initial capital stock}\\
+Z &amp;: \text{terminal capital stock}
 \end{align}\]</span></p>
-<ul>
-<li>This is the <strong>price path</strong> or a <strong>series of optimal prices</strong> for optimal extraction at various points in time.</li>
-<li>This indicates that <span class="math inline">\(p_t\)</span> is a <strong>dynamic optimization</strong> problem rather than a static optimization.</li>
-</ul>
-</section>
-<section class="slide level2">
-
-<p><span class="math display">\[\begin{align}
-\because p_1 &amp;= mc_e + (p_0 - mc_e)(1 + r) \\
-(1+r) &amp;= \frac{(p_1 - mc_e)}{(p_0 - mc_e)}  \\
-r &amp;= \frac{(p_1 - mc_e)-(p_0 - mc_e)}{(p_0 - mc_e)}
-\end{align}\]</span></p>
-<ul>
-<li>This <span class="math inline">\(p - mc_e\)</span> is also known as <strong>Marginal Resource Rent</strong>
-<ul>
-<li>where; <span class="math inline">\(p_1: \text{price of NRR}\\ mc_e: \text{cost of extraction of one unit of NRR}\\ r: \text{growth of marginal resource rent}\)</span></li>
-</ul></li>
-</ul>
-</section>
-<section class="slide level2">
-
-<ul>
-<li>We can now say that <em>along the optimum path of marginal resource extraction, the marginal resource rent should grow at the rate of discount</em> i.e.&nbsp;<span class="math inline">\(r = \frac{(p_1 - mc_e)-(p_0 - mc_e)}{(p_0 - mc_e)}\)</span>.</li>
-<li>In other words; <em>the most socially and economically profitable extraction path of a NRR is one along which marginal resource rent (MRR) must grow at the rate of interest or discount</em>: <strong>Hotelling’s Rule (1931)</strong>.</li>
-</ul>
-</section>
-<section class="slide level2">
-
-<ul>
-<li>Note that optimum extraction depends on two things <span class="math inline">\(p_1: \text{tomorrow's price }\)</span> and <span class="math inline">\(r: \text{the discount or the interest rate}\)</span></li>
-<li><span class="math inline">\(p_1\)</span> is the expected price that the resource owner will use.</li>
-<li><span class="math inline">\(r\)</span> varies from person to person.
-<ul>
-<li>Bias for today then use heavy discount rate.</li>
-</ul></li>
-</ul>
-</section>
-<section class="slide level2">
-
-<ul>
-<li>We know that at equilibrium <span class="math inline">\(p_t = mc_e + (p_0 - mc_e)(1 + r)^t\)</span>.</li>
-<li>Now <span class="math inline">\(\text{as }t \rightarrow \infty, p_t \rightarrow \infty\)</span></li>
-<li>Is there any such possibility? For instance, say after 200 years or more the price of petrol becomes infinite.</li>
-</ul>
-</section>
-<section class="slide level2">
-
-<ul>
-<li>The answer is <strong>No</strong>.</li>
-</ul>
-<ol type="1">
-<li>After 200 years or more we might find a substitute or an alternative resource or technology for petrol.</li>
-</ol>
-<ul>
-<li><strong>Backstop</strong>: The availability of alternative (substitute) resource (technology) which makes the utilization of existing resource more efficient. E.g. solar energy.</li>
-</ul>
-<ol start="2" type="1">
-<li>The availability of a backstop will impact (reduce) the demand for petrol and hence put a cap on the upper limit of the price.</li>
-</ol>
-</section>
-<section id="role-of-backstop-in-determining-the-optimal-price-path-of-an-existing-nrr" class="slide level2">
-<h2>Role of Backstop in determining the optimal price path of an existing NRR</h2>
-<ul>
-<li>Let’s assume <span class="math inline">\(mc_b\)</span> is the marginal cost of extraction of the backstop, and <span class="math inline">\(mc_b &gt; mc_e\)</span></li>
-<li>We also assume that there is no user cost for the backstop (unlike the NRR) because we have just discovered the backstop and have it in adequate supply.</li>
-</ul>
-</section>
-<section class="slide level2">
-
-<ul>
-<li><strong>Shift date</strong>: the time at which the NRR gets exhausted.</li>
-<li>Let us denote this as <span class="math inline">\(T\)</span>.</li>
-<li>The price path of the existing NRR at time <span class="math inline">\(T\)</span> is</li>
-</ul>
-<p><span class="math display">\[
-p_T = mc_e + (p_0 - mc_e)(1 + r)^T ... (1)
-\]</span> - Since there is no user cost for backstop, <span class="math display">\[
-\begin{align}
-p_T = mc_b \ldots (2)\\
-\text{where, } p_T:\text{price of the backstop}\\
-\\
-\text{From (1) and (2), we get}\\
-mc_b &amp;= mc_e + (p_0 - mc_e)(1+r)^T\\
-p_0 - mc_e &amp;= \frac{mc_b-mc_e}{(1+r)^T}
-\end{align}
-\]</span></p>
-</section>
-<section class="slide level2">
-
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
@@ -567,19 +392,19 @@ p_0 - mc_e &amp;= \frac{mc_b-mc_e}{(1+r)^T}
   </div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="1_introduction_files/libs/revealjs/dist/reveal.js"></script>
+  <script src="2_dynamic_optimisation_files/libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="1_introduction_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="1_introduction_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="1_introduction_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="1_introduction_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="1_introduction_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="2_dynamic_optimisation_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="2_dynamic_optimisation_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="2_dynamic_optimisation_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="2_dynamic_optimisation_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="2_dynamic_optimisation_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="1_introduction_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="1_introduction_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="1_introduction_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="1_introduction_files/libs/revealjs/plugin/math/math.js"></script>
+  <script src="2_dynamic_optimisation_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="2_dynamic_optimisation_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="2_dynamic_optimisation_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="2_dynamic_optimisation_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>

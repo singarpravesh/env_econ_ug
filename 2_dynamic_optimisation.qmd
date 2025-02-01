@@ -1,0 +1,53 @@
+---
+title: "Dynamic Optimization"
+format: revealjs
+---
+
+## Why are we even discussing Dynamic Optimization (DO)?
+
+- We've talked about the price path of NRR.
+- We've also see that as $t \to \infty, \ p_t \not \to \infty$ because of the availability of backstop.
+- However, until such a backstop becomes available, we need to determine the **optimal time path of the price** of the existing NRR.
+- This is done by optimising the resource use along the time $t \to T$.
+- For  this we need **dynamic optimisation**, for static optimisation does not work here.
+
+## Difference between DO and SO.
+
+- Static Optimisation
+
+\begin{align}
+\text{max }u &= u(X,Y)\\
+\text{s.t. } P_x.X + P_y.Y &= I\\
+\text{where; }X \ \text{and}\ Y&: \text{are goods}\\
+I &: \text{income}\\
+X^* \ , \ Y^*&: \text{Solution to the optimization problem} \\
+&\quad\text{at a specific time period}
+\end{align}
+
+---
+
+- Dynamic Optimisation
+  - Objective is to maximise lifetime utility by optimising our consumption of $X$ and $Y$ at each time period.
+  - E.g. over our lifetime we can decide on how much to consume, save, invest, etc. to optimise our life.
+ 
+---
+ 
+- E.g. the Indian economy is deciding on optimum investment in each period for 5 years so that at the end of the $5^th$ year, the objective of accumulating a certain level of capital stock is realised. The cost should be minimum.
+
+## {.smaller}
+
+```{r}
+#| echo: false
+
+
+knitr::include_graphics("images/do_state_stage_1.png")
+
+```
+\begin{align}
+(0,A) &: \text{initial state of the economy}\\
+(T,Z) &: \text{terminal state of the economy}\\
+0 &: \text{initial time}\\
+T &: \text{terminal time}\\
+A &: \text{initial capital stock}\\
+Z &: \text{terminal capital stock}
+\end{align}
