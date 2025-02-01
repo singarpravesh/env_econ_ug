@@ -1,0 +1,403 @@
+---
+title: "Resource and Environmental Economics"
+format: 
+  revealjs:
+    code-overflow: scroll
+    view: scroll
+    scrollProgress: true
+    slide-number: c/t
+    footer: "Sem VI"
+editor_options: 
+  chunk_output_type: console
+---
+
+
+
+## Justification for studying REE.
+
+- Economics is about allocating resources efficiently.
+- To our understanding "environment" is also a scarce resource.
+
+## What do we mean by "environment"
+
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+# Load required libraries
+library(ggforce)
+library(ggplot2)
+
+# Create a data frame to represent the three layers
+earth_layers <- data.frame(
+  layer = c("Atmosphere", "Biosphere", "Geosphere"),
+  radius = c(1.5, 1.2, 1) # Radius for each layer
+)
+
+# Add label positions (top, left, right)
+earth_layers$label_x <- c(0, 0, 0)  # X-coordinates for labels
+earth_layers$label_y <- c(1.5, 1.1, 0.6)     # Y-coordinates for labels
+
+# Create the plot
+ggplot() +
+  # Draw each layer as a circle
+  geom_circle(data = earth_layers, aes(x0 = 0, y0 = 0, r = radius, fill = layer), color = "black", size = 0.5) +
+  # Set the coordinate system to fixed
+  coord_fixed() +
+  # Add labels on three sides
+  geom_text(
+    data = earth_layers,
+    aes(x = label_x, y = label_y, label = layer),
+    size = 5,
+    fontface = "bold"
+  ) +
+  # Adjust the fill colors for each layer
+  scale_fill_manual(
+    values = c("Atmosphere" = "skyblue", "Biosphere" = "forestgreen", "Geosphere" = "brown")
+  ) +
+  # Add title and theme
+  ggtitle("") +
+  theme_minimal() +
+  theme(
+    axis.text = element_blank(),  # Remove axis text
+    axis.title = element_blank(), # Remove axis titles
+    axis.ticks = element_blank(), # Remove axis ticks
+    panel.grid = element_blank(), # Remove grid
+    legend.position = "none"      # Remove legend
+  )
+
+
+```
+
+## Definition of natural resource
+- Naturally occurring resources which can be made available for mankind under feasible **social**, **economic**, and **technological** framework.- Can we classify sea water as a natural resource?
+
+- Two types: 
+  - Renewable Resources: Generating capacity - forests, fishery, solar energy, etc.
+  - Non-renewable resources: No generating capacity over an economically feasible time horizon - coal, oil, etc.
+  
+---
+
+- Do renewable resources also get exhausted?
+  - Yes, if the rate of extraction $>$ the rate of growth.
+- Are we exhausting our nonrenewable resources too rapidly or too slowly?
+  - **Optimal rate of extraction**: The rate of extraction that maximises that inter-temporal benefits derived from such non-renewable resources.
+
+---
+
+- Example: 1000 kg of coal to be used over 10 years.
+  
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+# Load required library
+library(ggplot2)
+
+# Create a data frame representing the time periods and their positions
+time_periods <- data.frame(
+  time = 0:10,                 # Time points from t_0 to t_10
+  position = 0:10              # Corresponding positions on the line
+)
+
+# Add a column for labels using expressions
+time_periods$label <- paste0("t[", time_periods$time, "]") # Create labels as text
+
+# Create the plot
+ggplot(time_periods, aes(x = position, y = 0)) +
+  # Draw the line
+  geom_segment(aes(xend = position, yend = 0), color = "black", size = 1) +
+  # Add points at each segment
+  geom_point(color = "red", size = 3) +
+  # Add labels for each time period using parse = TRUE
+  geom_text(aes(label = label), vjust = -1, size = 5, parse = TRUE) +
+  # Customize the plot
+  ggtitle("") +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_blank(),    # Remove x-axis text
+    axis.ticks.x = element_blank(),  # Remove x-axis ticks
+    axis.title.x = element_blank(),  # Remove x-axis title
+    axis.text.y = element_blank(),   # Remove y-axis text
+    axis.ticks.y = element_blank(),  # Remove y-axis ticks
+    axis.title.y = element_blank(),  # Remove y-axis title
+    panel.grid = element_blank()     # Remove gridlines
+  )
+
+
+```
+
+
+## Natural resources as an open set
+
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+
+# Load required libraries
+library(ggplot2)
+library(grid)
+
+# Create a data frame for points inside the "U" set
+points_inside <- data.frame(
+  x = c(0.2, 0.3, 0.5, 0.6, 0.4),
+  y = c(0.5, 0.7, 0.4, 0.6, 0.3)
+)
+
+# Create the plot
+ggplot() +
+  # Draw the U shape (combination of two arcs and a straight line)
+  # Left side of the U
+  geom_curve(aes(x = 0, y = 0.6, xend = 0, yend = 0), curvature = -0.5, color = "blue", size = 1) +
+  # Bottom part of the U
+  geom_segment(aes(x = 0, y = 0, xend = 1, yend = 0), color = "blue", size = 1) +
+  # Right side of the U
+  geom_curve(aes(x = 1, y = 0.6, xend = 1, yend = 0), curvature = 0.5, color = "blue", size = 1) +
+  # Add points inside the set
+  geom_point(data = points_inside, aes(x = x, y = y), color = "black", size = 3) +
+  # Add "Added elements" label and arrow
+  annotate("text", x = -0.2, y = 0.6, label = "Added elements", size = 5, hjust = 0) +
+  annotate("curve", x = -0.1, y = 0.55, xend = 0.2, yend = 0.55, 
+           curvature = -0.3, arrow = arrow(length = unit(0.03, "npc")), color = "black") +
+  # Add "Eliminated element" label and arrow
+  annotate("text", x = 1.2, y = 0.6, label = "Eliminated element", size = 5, hjust = 0) +
+  annotate("curve", x = 0.8, y = 0.55, xend = 1.1, yend = 0.55, 
+           curvature = -0.3, arrow = arrow(length = unit(0.03, "npc")), color = "black") +
+  # Customize the plot
+  xlim(-0.5, 1.5) +
+  ylim(0, 1) +
+  theme_void()
+
+
+```
+
+- Added: Uranium
+- Eliminated: Extinct species of flora and fauna.
+
+## The optimal path
+
+- What should be the optimal path (*if we join the points we get a path*) of extraction for a non-renewable resource (NRR)?
+- For market goods
+  - $p = mc$, $p$- price , $mc$- marginal cost
+
+---
+
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+# Load necessary library
+library(ggplot2)
+
+# Create a data frame for the values
+y_t <- seq(0, 10, by = 0.1)  # y_t values
+p_t <- 10 - y_t              # Downward sloping price function (p = p(y_t))
+mc <- rep(4, length(y_t))    # Horizontal MC curve at p = 4
+
+# Combine into a data frame
+data <- data.frame(y_t, p_t, mc)
+
+# Calculate the intersection point
+intersection_y <- 10 - 4  # where p_t = mc
+intersection_x <- intersection_y  # since y_t = x when p = mc
+
+# Create the plot
+ggplot(data, aes(x = y_t)) +
+  geom_line(aes(y = p_t), color = "blue", size = 1) + 
+  geom_hline(aes(yintercept = 4), color = "red", linetype = "dashed", size = 1) +
+  labs(title = "Price and Marginal Cost Curves",
+       x = expression(y[t]),
+       y = expression(p[t])) +
+  annotate("text", x = 5, y = 6, label = expression(p == p(y[t])), color = "blue", size = 5) +
+  annotate("text", x = 10, y = 4.2, label = "mc", color = "red", size = 5) +
+  
+  # Add vertical line from intersection to x-axis
+  geom_segment(aes(x = intersection_x, xend = intersection_x, y = 0, yend = intersection_y), 
+               color = "green", linetype="dotted", size=1) +
+  
+  # Label the point OP on the x-axis
+  annotate("text", x = intersection_x - 0.1, y =  1.5, label = "Optimal Rate\n of extraction/production", color = "green", size=5) +
+
+  theme_minimal() +
+  xlim(0, 10) + ylim(0, 10)
+
+```
+
+---
+
+- Can we apply `p = mc` for a NRR?
+  - No, NRR are not easily replicable $\rightarrow$ today's production/extraction has some opportunity cost as the *same resource is not available for tomorrow.*
+  
+---
+
+- In this situation we have an additional (opportunity) cost.
+
+
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+# Load necessary library
+library(ggplot2)
+
+# Create a data frame for the values
+y_t <- seq(0, 10, by = 0.1)  # y_t values
+p_t <- 10 - y_t              # Downward sloping price function (p = p(y_t))
+mc <- rep(4, length(y_t))    # Original MC curve at p = 4
+amc <- rep(6, length(y_t))    # Augmented Marginal Curve at p = 6
+
+# Combine into a data frame
+data <- data.frame(y_t, p_t, mc, amc)
+
+# Create the plot
+ggplot(data, aes(x = y_t)) +
+  geom_line(aes(y = p_t), color = "blue", size = 1) + 
+  geom_hline(aes(yintercept = 4), color = "red", linetype = "dashed", size = 1) + 
+  geom_hline(aes(yintercept = 6), color = "purple", linetype = "dotted", size = 1) + 
+  labs(title = "Price and Marginal Cost Curves",
+       x = expression(y[t]),
+       y = expression(p[t])) +
+  annotate("text", x = 5, y = 6, label = expression(p == p(y[t])), color = "blue", size = 5) +
+  annotate("text", x = 10, y = 4.2, label = "mc", color = "red", size = 5) +
+  
+  # Label the AMC line
+  annotate("text", x = 10, y = 6.2, label = "AMC", color = "purple", size = 5) +
+
+  # Add an up arrow to indicate the shift of the MC curve
+  geom_segment(aes(x = 8, xend = 8, y = 4, yend = 5), 
+               arrow = arrow(length=unit(0.2,"inches")), 
+               color="black", size=1) +
+  
+  # Label for the arrow indicating upward shift
+  annotate("text", x = 8.5, y = 5.5, label="Shift Upward", color="black", size=4) +
+
+  theme_minimal() +
+  xlim(0, 10) + ylim(0, 10)
+
+```
+
+
+$p = mc_e + mu_c$
+where; 
+  - $mc_e:$ marginal cost of extraction
+  - $mu_c:$ marginal user cost
+  
+---
+
+
+- Let us assume we have some amount of NRR which we are going to use in 2 periods;
+  - $0: 1^{st} \text{period}$
+  - $1: \text{last period}$
+  - $p_0: \text{price at } t_0$
+  - $p_1: \text{price at } t_1$
+- The resource owner has to decide **whether to use the resource today or keep it for tomorrow**.
+  - $p_0 - mc_e$: Today's benefit
+  - $p_1 - mc_e$: Tomorrow's benefit (if the resource is left for tomorrow)
+  
+---
+
+- At $t_0$, the owner has to convert tomorrow's benefit to today's benefit.
+- This benefit is given by
+$$
+\frac{p_1 - mc_e}{1 + r}
+$$
+
+where $r$ is the rate of interest or the discount rate.
+
+## {.incremental}
+
+- We are converting tomorrow's benefit to today's benefit by discounting *and the discount rate is $r$*.
+- If $(p_0 - mc_e) > \frac{(p_1 - mc_e)}{1 + r}$ $\implies$ the resource owner should use it today. The RHS is also called the **discounted benefit**.
+- If $(p_0 - mc_e) < \frac{(p_1 - mc_e)}{1 + r}$ $\implies$ the resource owner should use it tomorrow.
+- If $(p_0 - mc_e) = \frac{(p_1 - mc_e)}{1 + r}$ $\implies$ the resource owner is indifferent between today's use and tomorrow's.
+
+---
+
+- $(p_0 - mc_e) = \frac{(p_1 - mc_e)}{1 + r}$ is called the equilibrium condition.
+- $p_0 = mc_e + \frac{(p_1 - mc_e)}{1 + r}$
+- Since the marginal cost pricing is not applicable for NRR, an additional opportunity cost was added to $mc_e$.
+- This component of cost is known as the marginal user cost (muc)
+where $mu_c = \frac{(p_1 - mc_e)}{1 + r}$
+- $mc_e + mu_c = \text{augmented marginal cost}$
+- If the $mu_c$ is not added to the $mc_e$ then the NRR may not be available for extraction tomorrow.
+
+---
+
+
+\begin{align}
+\because p_0 &= mc_e + \frac{(p_1 - mc_e)}{1 + r}\\
+p_1 &= mc_e + (p_0 - mc_e)(1 + r) \\
+p_2 &= mc_e + (p_0 - mc_e)(1 + r)^2\\
+\text{In general we can write};\\
+p_t &= mc_e + (p_0 - mc_e)(1 + r)^t\\
+\end{align}
+
+
+- This is the **price path** or a **series of optimal prices** for optimal extraction at various points in time.
+- This indicates that $p_t$ is a **dynamic optimization** problem rather than a static optimization.
+
+---
+
+
+\begin{align}
+\because p_1 &= mc_e + (p_0 - mc_e)(1 + r) \\
+(1+r) &= \frac{(p_1 - mc_e)}{(p_0 - mc_e)}  \\
+r &= \frac{(p_1 - mc_e)-(p_0 - mc_e)}{(p_0 - mc_e)}
+\end{align}
+
+- This $p - mc_e$ is also known as **Marginal Resource Rent**
+  - where; $p_1: \text{price of NRR}\\ mc_e: \text{cost of extraction of one unit of NRR}\\ r: \text{growth of marginal resource rent}$
+
+---
+
+- We can now say that *along the optimum path of marginal resource extraction, the marginal resource rent should grow at the rate of discount* i.e. $r = \frac{(p_1 - mc_e)-(p_0 - mc_e)}{(p_0 - mc_e)}$.
+- In other words; *the most socially and economically profitable extraction path of a NRR is one along which marginal resource rent (MRR) must grow at the rate of interest or discount*: **Hotelling's Rule (1931)**.
+  
+---
+
+- Note that optimum extraction depends on two things $p_1: \text{tomorrow's price }$ and $r: \text{the discount or the interest rate}$
+- $p_1$ is the expected price that the resource owner will use.
+- $r$ varies from person to person.
+  - Bias for today then use heavy discount rate.
+  
+---
+
+- We know that at equilibrium $p_t = mc_e + (p_0 - mc_e)(1 + r)^t$.
+- Now $\text{as }t \rightarrow \infty, p_t \rightarrow \infty$
+- Is there any such possibility? For instance, say after 200 years or more the price of petrol becomes infinite.
+
+---
+
+- The answer is **No**.
+1. After 200 years or more we might find a substitute or an alternative resource or technology for petrol.
+  - **Backstop**: The availability of alternative (substitute) resource (technology) which makes the utilization of existing resource more efficient. E.g. solar energy.
+2. The availability of a backstop will impact (reduce) the demand for petrol and hence put a cap on the upper limit of the price.
+
+## Role of Backstop in determining the optimal price path of an existing NRR
+
+- Let's assume $mc_b$ is the marginal cost of extraction of the backstop, and $mc_b > mc_e$
+- We also assume that there is no user cost for the backstop (unlike the NRR) because we have just discovered the backstop and have it in adequate supply.
+
+---
+
+- **Shift date**: the time at which the NRR gets exhausted.
+- Let us denote this as $T$.
+- The price path of the existing NRR at time $T$ is
+
+$$
+p_T = mc_e + (p_0 - mc_e)(1 + r)^T ... (1)
+$$
+- Since there is no user cost for backstop,
+$$
+\begin{align}
+p_T = mc_b \ldots (2)\\
+\text{where, } p_T:\text{price of the backstop}\\
+\\
+\text{From (1) and (2), we get}\\
+mc_b &= mc_e + (p_0 - mc_e)(1+r)^T\\
+p_0 - mc_e &= \frac{mc_b-mc_e}{(1+r)^T}
+\end{align}
+$$
+
+---
