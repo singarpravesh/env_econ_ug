@@ -368,19 +368,249 @@ X^* \ , \ Y^*&amp;: \text{Solution to the optimization problem} \\
 <section class="slide level2">
 
 <ul>
-<li>E.g. the Indian economy is deciding on optimum investment in each period for 5 years so that at the end of the <span class="math inline">\(5^th\)</span> year, the objective of accumulating a certain level of capital stock is realised. The cost should be minimum.</li>
+<li>E.g. the Indian economy is deciding on optimum investment in each period for 5 years so that at the end of the <span class="math inline">\(5^{th}\)</span> year, the objective of accumulating a certain level of capital stock is realised.</li>
+<li>The cost should be minimum.</li>
 </ul>
 </section>
 <section id="section" class="slide level2 smaller">
 <h2></h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="images/do_state_stage_1.png" style="width:400.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:30%;">
+<ul>
+<li><span class="math inline">\((0,A)\)</span> : initial state of the economy</li>
+<li><span class="math inline">\((T,Z)\)</span> : terminal state of the economy</li>
+<li><span class="math inline">\(0\)</span> : initial time</li>
+<li><span class="math inline">\(T\)</span> : terminal time</li>
+<li><span class="math inline">\(A\)</span> : initial capital stock</li>
+<li><span class="math inline">\(Z\)</span> : terminal capital stock</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="section-1" class="slide level2 smaller">
+<h2></h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="images/do_paths.png" style="width:400.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:30%;">
+<ul>
+<li>Suppose the economy starts at <span class="math inline">\((0,A)\)</span> and wants to reach <span class="math inline">\((T,Z)\)</span>, the decision variable will be <strong>investment in each period</strong>.</li>
+<li>There are different paths to reach the terminal state from the initial state.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="section-2" class="slide level2 smaller">
+<h2></h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="images/do_paths.png" style="width:400.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:30%;">
+<ul>
+<li>The question is- which path to select?</li>
+<li>The initial thought might be to choose the path <span class="math inline">\(A \to X\)</span>.</li>
+<li>However, the total cost along the entire path must be considered while choosing the optimal path.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="section-3" class="slide level2 smaller">
+<h2></h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="images/do_paths_complex.png" style="width:400.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:30%;">
+<ul>
+<li>Consider a more complex path structure.</li>
+<li>Here costs (in billions of ₹) are represented in circles.</li>
+<li>In this case, the path <span class="math inline">\(ACEHJZ\)</span> gives the optimal solution with <span class="math inline">\(₹14\)</span> billion as the minimum cost.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="section-4" class="slide level2 smaller">
+<h2></h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="images/do_paths_continuous.png" style="width:400.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:30%;">
+<ul>
+<li>This is the continuous variable version.</li>
+<li>Each possible path is seen to travel through an infinite number of stages in the interval <span class="math inline">\([0, T]\)</span>.</li>
+<li>E.g. to transport a load of cargo from location <span class="math inline">\(A\)</span> to <span class="math inline">\(Z\)</span> at minimum travel cost by selecting an appropriate travel path.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="important-elements-of-do" class="slide level2">
+<h2>Important elements of DO</h2>
+<ol type="1">
+<li>In DO, we have initial state <span class="math inline">\([0,A]\)</span> and terminal state <span class="math inline">\([T, Z]\)</span>.</li>
+<li>There are different paths to achieve the terminal state.</li>
+<li>There should be a <strong>decision variable</strong>. In our example, it’s investment.</li>
+<li>We should have an <strong>objective functional</strong> which we are trying to optimize.</li>
+</ol>
+</section>
+<section id="objective-function-vs-objective-functional" class="slide level2 smaller">
+<h2>Objective function vs objective functional</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="images/do_functional.png" style="width:200.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+<ul>
+<li><p>A function maps elements from one set (the domain) to another set (the codomain). For example, <span class="math inline">\(f(x) = x²\)</span> maps real numbers to real numbers.</p></li>
+<li><p>A functional, on the other hand, is a special type of function that takes another function as its input and returns a number (or more generally, a scalar value) as its output. In other words, a functional is a <strong>“function of functions.”</strong></p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="section-5" class="slide level2 smaller">
+<h2></h2>
+<ul>
+<li>Examples:-
+<ol type="1">
+<li>The definite integral is a functional:</li>
+</ol>
+<ul>
+<li>Input: A function <span class="math inline">\(f(x)\)</span></li>
+<li>Output: A single number representing the area under <span class="math inline">\(f(x)\)</span></li>
+<li>Example: <span class="math inline">\(∫₀¹ f(x)dx\)</span> takes any function f and returns its integral from 0 to 1</li>
+</ul>
+<ol start="2" type="1">
+<li>The maximum value functional:</li>
+</ol>
+<ul>
+<li>Input: A function <span class="math inline">\(f(x)\)</span> defined on an interval <span class="math inline">\([a,b]\)</span></li>
+<li>Output: The maximum value of <span class="math inline">\(f(x)\)</span> on that interval</li>
+<li>Example: <span class="math inline">\(max{f(x): x ∈ [0,1]}\)</span> takes a function and returns its highest value</li>
+</ul>
+<ol start="3" type="1">
+<li>The norm of a function is a functional:</li>
+</ol>
+<ul>
+<li>Input: A function <span class="math inline">\(f(x)\)</span></li>
+<li>Output: A non-negative real number measuring the “size” of the function</li>
+<li>Example: <span class="math inline">\(L₂ norm: ||f|| = √(∫|f(x)|²dx)\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level2">
 
-<img data-src="images/do_state_stage_1.png" width="302" class="r-stretch"><p><span class="math display">\[\begin{align}
-(0,A) &amp;: \text{initial state of the economy}\\
-(T,Z) &amp;: \text{terminal state of the economy}\\
-0 &amp;: \text{initial time}\\
-T &amp;: \text{terminal time}\\
-A &amp;: \text{initial capital stock}\\
-Z &amp;: \text{terminal capital stock}
+<ul>
+<li><p>Functionals are particularly important when finding the shortest path between two points on a surface, we’re actually minimizing a functional that takes a path (which is a function) as input and returns its length as output.</p></li>
+<li><p>A key distinction is that functions operate on points (numbers, vectors, etc.), while functionals operate on entire functions. This makes functionals particularly useful in:</p>
+<ul>
+<li>Optimization problems where we’re looking for optimal functions rather than optimal points</li>
+</ul></li>
+</ul>
+</section>
+<section id="section-6" class="slide level2 smaller">
+<h2></h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="images/do_variable.png" style="width:200.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+<ul>
+<li>We might apparently feel that <span class="math inline">\([0, A]\)</span> and <span class="math inline">\([T, Z]\)</span> are fixed. But this is not the case.</li>
+<li>Either <span class="math inline">\(T\)</span> or <span class="math inline">\(Z\)</span> or both may be variable in DO.</li>
+<li>There are alternatives regarding the <strong>terminal situation</strong>.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="dynamic-optimization" class="slide level2">
+<h2>Dynamic Optimization</h2>
+<ul>
+<li><p>Let us assume we have an asset/resource stock from which we want to derive 2 types of benefits:</p>
+<ol type="1">
+<li><strong>Flow benefit</strong>: the value assumed during the use period of the resource.</li>
+<li><strong>Scrap value</strong>: the value derived from a resource after it becomes obsolete. E.g.a car sold after 20 years or more as scrap.</li>
+</ol></li>
+<li><p>Our objective is to maximize the <strong>total benefit (flow + scrap value)</strong> from the resource.</p></li>
+<li><p>Let us denote</p>
+<p><span class="math inline">\(V\)</span> : flow benefit</p>
+<p><span class="math inline">\(F\)</span> : the scrap value</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p><span class="math inline">\(\therefore\)</span> Our objective is to</p>
+<p><span class="math display">\[\begin{equation}
+\text{max}_{[y(t)]} \ \int_0^T[V(y(t), X(t), t)]dt + F(X(T)) \\
+\end{equation}\]</span></p>
+<p><span class="math display">\[\begin{align}
+\text{s.t.}\ \frac{d X(t)}{d t} = \dot{X(t)} &amp;= f(y(t), X(t)) \ \to \text{equation of motion}\\
+&amp; \qquad \qquad \qquad \qquad \text{or dynamic constraint}\\
+X(0) &amp;= a \ \to \text{constant}
+\end{align}\]</span></p>
+<p>where; <span class="math display">\[\begin{align}
+F(X(T)) &amp;: \text{scrap value which is realised at the end of the time i.e. T.}\\
+y(t) &amp;: \text{decision variable or control variable (e.g. rate of extraction)}\\
+X(t) &amp;: \text{state variable i.e. stock of resource at time t.}\\
+T &amp;:\text{point of time when scrap value is realised.}\\
+t &amp;: \text{continuous time}
+
+\end{align}\]</span></p>
+<p><span class="math display">\[\begin{align}
+
 \end{align}\]</span></p>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -419,7 +649,7 @@ Z &amp;: \text{terminal capital stock}
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'smaller': false,
+'smaller': true,
  
         // Display controls in the bottom right corner
         controls: false,

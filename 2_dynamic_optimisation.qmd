@@ -1,6 +1,8 @@
 ---
 title: "Dynamic Optimization"
-format: revealjs
+format: 
+  revealjs:
+    smaller: true
 ---
 
 ## Why are we even discussing Dynamic Optimization (DO)?
@@ -32,22 +34,253 @@ X^* \ , \ Y^*&: \text{Solution to the optimization problem} \\
  
 ---
  
-- E.g. the Indian economy is deciding on optimum investment in each period for 5 years so that at the end of the $5^th$ year, the objective of accumulating a certain level of capital stock is realised. The cost should be minimum.
+- E.g. the Indian economy is deciding on optimum investment in each period for 5 years so that at the end of the $5^{th}$ year, the objective of accumulating a certain level of capital stock is realised. 
+- The cost should be minimum.
 
 ## {.smaller}
 
+:::: columns
+
+::: {.column width="70%"}
 ```{r}
 #| echo: false
+#| out-width: "400%"
 
 
 knitr::include_graphics("images/do_state_stage_1.png")
 
 ```
+:::
+
+::: {.column width="30%"}
+
+- $(0,A)$ : initial state of the economy
+- $(T,Z)$ : terminal state of the economy
+- $0$ : initial time
+- $T$ : terminal time
+- $A$ : initial capital stock
+- $Z$ : terminal capital stock
+
+:::
+
+::::
+
+## {.smaller}
+
+:::: columns
+
+::: {.column width="70%"}
+
+```{r}
+#| echo: false
+#| out-width: "400%"
+
+knitr::include_graphics("images/do_paths.png")
+```
+
+:::
+
+::: {.column width="30%"}
+- Suppose the economy starts at $(0,A)$ and wants to reach $(T,Z)$, the decision variable will be **investment in each period**.
+- There are different paths to reach the terminal state from the initial state.
+
+:::
+
+::::
+
+## {.smaller}
+
+:::: columns
+
+::: {.column width="70%"}
+
+```{r}
+#| echo: false
+#| out-width: "400%"
+
+knitr::include_graphics("images/do_paths.png")
+```
+
+:::
+
+::: {.column width="30%"}
+- The question is- which path to select?
+- The initial thought might be to choose the path $A \to X$. 
+- However, the total cost along the entire path must be considered while choosing the optimal path.
+
+:::
+::::
+
+## {.smaller}
+
+:::: columns
+
+::: {.column width="70%"}
+
+```{r}
+#| echo: false
+#| out-width: "400%"
+
+knitr::include_graphics("images/do_paths_complex.png")
+```
+
+:::
+
+::: {.column width="30%"}
+- Consider a more complex path structure.
+- Here costs (in billions of ₹) are represented in circles.
+- In this case, the path $ACEHJZ$ gives the optimal solution with $₹14$ billion as the minimum cost.
+
+
+:::
+
+::::
+
+## {.smaller}
+
+:::: columns
+
+::: {.column width="70%"}
+
+```{r}
+#| echo: false
+#| out-width: "400%"
+
+knitr::include_graphics("images/do_paths_continuous.png")
+```
+
+:::
+
+::: {.column width="30%"}
+- This is the continuous variable version.
+- Each possible path is seen to travel through an infinite number of stages in the interval $[0, T]$.
+- E.g. to transport a load of cargo from location $A$ to $Z$ at minimum travel cost by selecting an appropriate travel path.
+
+
+:::
+
+::::
+
+## Important elements of DO
+1. In DO, we have initial state $[0,A]$ and terminal state $[T, Z]$.
+2. There are different paths to achieve the terminal state.
+3. There should be a **decision variable**. In our example, it's investment.
+4. We should have an **objective functional** which we are trying to optimize.
+
+## Objective function vs objective functional {.smaller}
+
+:::: columns
+
+::: {.column width="60%"}
+```{r}
+#| echo: false
+#| out-width: "200%"
+
+knitr::include_graphics("images/do_functional.png")
+```
+
+:::
+
+::: {.column width="40%"}
+- A function maps elements from one set (the domain) to another set (the codomain). For example, $f(x) = x²$ maps real numbers to real numbers.
+
+- A functional, on the other hand, is a special type of function that takes another function as its input and returns a number (or more generally, a scalar value) as its output. In other words, a functional is a **"function of functions."**
+
+:::
+
+::::
+
+## {.smaller}
+
+- Examples:-
+  1. The definite integral is a functional:
+    - Input: A function $f(x)$
+    - Output: A single number representing the area under $f(x)$
+    - Example: $∫₀¹ f(x)dx$ takes any function f and returns its integral from 0 to 1
+
+  2. The maximum value functional:
+    - Input: A function $f(x)$ defined on an interval $[a,b]$
+    - Output: The maximum value of $f(x)$ on that interval
+    - Example: $max{f(x): x ∈ [0,1]}$ takes a function and returns its highest value
+
+  3. The norm of a function is a functional:
+    - Input: A function $f(x)$
+    - Output: A non-negative real number measuring the "size" of the function
+    - Example: $L₂ norm: ||f|| = √(∫|f(x)|²dx)$
+
+---
+
+- Functionals are particularly important when finding the shortest path between two points on a surface, we're actually minimizing a functional that takes a path (which is a function) as input and returns its length as output.
+
+- A key distinction is that functions operate on points (numbers, vectors, etc.), while functionals operate on entire functions. This makes functionals particularly useful in:
+  - Optimization problems where we're looking for optimal functions rather than optimal points
+
+## {.smaller}
+
+:::: columns
+
+::: {.column width="60%"}
+```{r}
+#| echo: false
+#| out-width: "200%"
+
+knitr::include_graphics("images/do_variable.png")
+```
+
+:::
+
+::: {.column width="40%"}
+- We might apparently feel that $[0, A]$ and $[T, Z]$ are fixed. But this is not the case.
+- Either $T$ or $Z$ or both may be variable in DO.
+- There are alternatives regarding the **terminal situation**.
+
+:::
+
+::::
+
+## Dynamic Optimization
+
+- Let us assume we have an asset/resource stock from which we want to derive 2 types of benefits:
+  1. **Flow benefit**: the value assumed during the use period of the resource.
+  2. **Scrap value**: the value derived from a resource after it becomes obsolete. E.g.a car sold after 20 years or more as scrap.
+- Our objective is to maximize the **total benefit (flow + scrap value)** from the resource.
+- Let us denote
+
+  $V$ : flow benefit
+
+  $F$ : the scrap value
+
+
+---
+
+
+$\therefore$ Our objective is to
+
+
+\begin{equation}
+\text{max}_{[y(t)]} \ \int_0^T[V(y(t), X(t), t)]dt + F(X(T)) \\
+\end{equation}
+
+
 \begin{align}
-(0,A) &: \text{initial state of the economy}\\
-(T,Z) &: \text{terminal state of the economy}\\
-0 &: \text{initial time}\\
-T &: \text{terminal time}\\
-A &: \text{initial capital stock}\\
-Z &: \text{terminal capital stock}
+\text{s.t.}\ \frac{d X(t)}{d t} = \dot{X(t)} &= f(y(t), X(t)) \ \to \text{equation of motion}\\
+& \qquad \qquad \qquad \qquad \text{or dynamic constraint}\\
+X(0) &= a \ \to \text{constant}
+\end{align}
+
+where;
+\begin{align}
+F(X(T)) &: \text{scrap value which is realised at the end of the time i.e. T.}\\
+y(t) &: \text{decision variable or control variable (e.g. rate of extraction)}\\
+X(t) &: \text{state variable i.e. stock of resource at time t.}\\
+T &:\text{point of time when scrap value is realised.}\\
+t &: \text{continuous time}
+
+\end{align}
+  
+  
+
+
+\begin{align}
+
 \end{align}
