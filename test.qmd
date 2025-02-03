@@ -1,0 +1,11 @@
+---
+title: "Untitled"
+format: revealjs
+---
+
+\begin{align}
+L &= \int_0^T[V(\cdot) + \lambda(t)\{f(\cdot) - \dot{X}(t)\}]dt + F(X(T))\\
+  &= \int_0^T[V(\cdot) + \lambda(t)f(\cdot) - \lambda(t)\dot{X}(t)]dt + F(X(T))\dots \tag{1}
+\end{align}
+
+

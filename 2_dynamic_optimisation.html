@@ -597,7 +597,7 @@ X^* \ , \ Y^*&amp;: \text{Solution to the optimization problem} \\
 \text{max}_{[y(t)]} \ \int_0^T[V(y(t), X(t), t)]dt + F(X(T)) \\
 \end{equation}\]</span></p>
 <p><span class="math display">\[\begin{align}
-\text{s.t.}\ \frac{d X(t)}{d t} = \dot{X(t)} &amp;= f(y(t), X(t)) \ \to \text{equation of motion}\\
+\text{s.t.}\ \frac{d X(t)}{d t} = \dot{X}(t) &amp;= f(y(t), X(t)) \ \to \text{equation of motion}\\
 &amp; \qquad \qquad \qquad \qquad \text{or dynamic constraint}\\
 X(0) &amp;= a \ \to \text{constant}
 \end{align}\]</span></p>
@@ -609,9 +609,283 @@ T &amp;:\text{point of time when scrap value is realised.}\\
 t &amp;: \text{continuous time}
 
 \end{align}\]</span></p>
-<p><span class="math display">\[\begin{align}
+</section>
+<section class="slide level2">
 
+<p>To maximise the objective functional we will set a Lagrangian function:</p>
+<p><span class="math display">\[\begin{align}
+L &amp;= \int_0^T[V(\cdot) + \lambda(t)\{f(\cdot) - \dot{X}(t)\}]dt + F(X(T))\\
+  &amp;= \int_0^T[V(\cdot) + \lambda(t)f(\cdot) - \lambda(t)\dot{X}(t)]dt + F(X(T)) \ \dots (1)
 \end{align}\]</span></p>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>Consider;</p>
+<p><span class="math display">\[\begin{align}
+-\int_0^T \lambda(t)\ \dot{X}(t)dt
+\end{align}\]</span></p>
+<p>The standard integration by parts formula is:</p>
+<p><span class="math display">\[\begin{equation}
+\int u \frac{dv}{dt} dt = u \cdot v - \int v \frac{du}{dt} dt
+\end{equation}\]</span></p>
+</div><div class="column" style="width:55%;">
+<p>Let <span class="math inline">\(u = \lambda(t)\)</span></p>
+<p>Let <span class="math inline">\(dv = \dot{X}(t)dt\)</span></p>
+<p><span class="math inline">\(\frac{du}{dt} = \dot{\lambda}(t)\)</span></p>
+<p><span class="math inline">\(v = X(t)\)</span></p>
+<p><span class="math display">\[\begin{align}
+-\int_0^T \lambda(t)\ \dot{X}(t)dt &amp;= -[\lambda(t)X(t)]_0^T + \int_0^T X(t)\dot{\lambda}(t)dt \\
+&amp;= -\lambda(T)X(T) + \lambda(0)X(0) + \int_0^T X(t)\dot{\lambda}(t)dt\\
+\end{align}\]</span></p>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<p><span class="math display">\[\begin{align}
+\therefore -\int_0^T \lambda(t)\ \dot{X}(t)dt &amp;= -[\lambda(t)X(t)]_0^T + \int_0^T X(t)\dot{\lambda}(t)dt \\
+&amp;= -\lambda(T)X(T) + \lambda(0)X(0) + \int_0^T X(t)\dot{\lambda}(t)dt \ \dots (2)
+\end{align}\]</span></p>
+<p>Recall;</p>
+<p><span class="math display">\[\begin{align}
+L &amp;= \int_0^T[V(\cdot) + \lambda(t)f(\cdot) - \lambda(t)\dot{X}(t)]dt + F(X(T))\ \dots (1)
+\end{align}\]</span></p>
+<p>Substituting the result from equation (2):</p>
+<p><span class="math display">\[\begin{align}
+L &amp;= \int_0^T[V(\cdot) + \lambda(t)f(\cdot)]dt - \lambda(T)X(T) + \lambda(0)X(0) + \int_0^T X(t)\dot{\lambda}(t)dt + F(X(T)) \ \dots (3)
+\end{align}\]</span></p>
+</section>
+<section class="slide level2">
+
+<p>Let us define</p>
+<p><span class="math display">\[\begin{align}
+H &amp;= V(\cdot) + \lambda(t)f(\cdot) \\
+\implies H &amp;= H(y(t), X(t), \lambda(t), t)
+\end{align}\]</span></p>
+<p><span class="math display">\[\begin{align}
+\therefore L &amp;= \int_0^T[H(\cdot)]dt - \lambda(T)X(T) + \lambda(0)X(0) + \int_0^T X(t)\dot{\lambda}(t)dt + F(X(T)) \\
+&amp;= \int_0^T[H(\cdot)]dt  + \int_0^T X(t)\dot{\lambda}(t)dt + F(X(T)- \lambda(T)X(T) + \lambda(0)X(0)) \\
+&amp;= \int_0^T\left[H(\cdot)  + X(t)\dot{\lambda}(t)\right]dt + F(X(T)- \lambda(T)X(T) + \lambda(0)X(0))
+\end{align}\]</span></p>
+<p>We want to optimize <span class="math inline">\(L\)</span> by chosing <span class="math inline">\(y(t)\)</span> the control variable.</p>
+<p>Let us assume <span class="math inline">\(y(t)\)</span> is changed to <span class="math inline">\(y(t) + \Delta y(t)\)</span></p>
+<p><span class="math inline">\(\{y(t) \to y(t) + \Delta y(t)\}\)</span>: <strong>Change in the rate of extraction.</strong></p>
+<p><span class="math inline">\(\{X(t) \to X(t) + \Delta X(t)\}\)</span>: <strong>Change in the stock of resources.</strong></p>
+</section>
+<section id="step-1-define-l" class="slide level2">
+<h2>Step 1: Define <span class="math inline">\(L\)</span></h2>
+<p>The given functional is:</p>
+<p><span class="math display">\[
+L = \int_0^T\left[H(\cdot)  + X(t)\dot{\lambda}(t)\right]dt + F(X(T)- \lambda(T)X(T) + \lambda(0)X(0))
+\]</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(H(\cdot)\)</span> is the <strong>Hamiltonian</strong>.</li>
+<li><span class="math inline">\(X(t)\)</span> is the <strong>state variable</strong>.</li>
+<li><span class="math inline">\(\lambda(t)\)</span> is the <strong>co-state (Lagrange multiplier)</strong>.</li>
+<li><span class="math inline">\(F(\cdot)\)</span> is a function depending on the terminal state <span class="math inline">\(X(T)\)</span>.</li>
+</ul>
+</section>
+<section id="why-is-it-called-the-hamiltonian" class="slide level2">
+<h2>Why is it called the Hamiltonian?</h2>
+<p>The <strong>Hamiltonian</strong> is named after <strong>William Rowan Hamilton</strong>, who developed <strong>Hamiltonian mechanics</strong> in the 19th century. Originally, it was used in <strong>classical mechanics</strong> to describe the total energy of a system:</p>
+<p><span class="math display">\[
+H(q, p, t) = T + V
+\]</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(q\)</span> = position variables (generalized coordinates),</li>
+<li><span class="math inline">\(p\)</span> = momentum variables (conjugate to <span class="math inline">\(q\)</span>),</li>
+<li><span class="math inline">\(T\)</span> = kinetic energy,</li>
+<li><span class="math inline">\(V\)</span> = potential energy.</li>
+</ul>
+</section>
+<section id="step-2-compute-the-variation-delta-l" class="slide level2">
+<h2>Step 2: Compute the Variation <span class="math inline">\(\Delta L\)</span></h2>
+<p>The total variation of <span class="math inline">\(L\)</span> comes from two parts:</p>
+<ol type="1">
+<li><strong>Variation of the Integral Term</strong>: <span class="math display">\[
+\int_0^T \left[H(\cdot) + X(t)\dot{\lambda}(t)\right] dt
+\]</span></li>
+<li><strong>Variation of the Terminal Function <span class="math inline">\(F(\cdot)\)</span></strong>: <span class="math display">\[
+F(X(T)- \lambda(T)X(T) + \lambda(0)X(0))
+\]</span></li>
+</ol>
+</section>
+<section id="step-2.1-variation-of-the-integral-term" class="slide level2 smaller">
+<h2>Step 2.1: Variation of the Integral Term</h2>
+<p>Since <span class="math inline">\(L\)</span> is an integral, its variation follows:</p>
+<p><span class="math display">\[
+\Delta L = \int_0^T \Delta \left[ H(\cdot) + X(t)\dot{\lambda}(t) \right] dt + \Delta F(\cdot)
+\]</span></p>
+<p>Expanding <span class="math inline">\(\Delta H(\cdot)\)</span> using the <strong>first-order Taylor expansion</strong>:</p>
+<p><span class="math display">\[
+\Delta H(\cdot) = \frac{\partial H}{\partial y(t)} \Delta y(t) + \frac{\partial H}{\partial X(t)} \Delta X(t)
+\]</span></p>
+<p>Also, the variation of <span class="math inline">\(X(t) \dot{\lambda}(t)\)</span> gives:</p>
+<p><span class="math display">\[
+\Delta (X(t) \dot{\lambda}(t)) = \dot{\lambda}(t) \Delta X(t)
+\]</span></p>
+<p><span class="math display">\[
+\implies \int_0^T \left[
+\frac{\partial H}{\partial y(t)} \Delta y(t) +
+\frac{\partial H}{\partial X(t)} \Delta X(t) +
+\dot{\lambda}(t) \Delta X(t)
+\right] dt
+\]</span></p>
+</section>
+<section id="step-2.2-variation-of-the-terminal-function-fcdot" class="slide level2 smaller">
+<h2>Step 2.2: Variation of the Terminal Function <span class="math inline">\(F(\cdot)\)</span></h2>
+<p>The function <span class="math inline">\(F(X(T)- \lambda(T)X(T) + \lambda(0)X(0))\)</span> depends on <span class="math inline">\(X(T)\)</span>, <span class="math inline">\(\lambda(T)\)</span>, and <span class="math inline">\(X(0)\)</span>. Its total variation is:</p>
+<p><span class="math display">\[
+\Delta F = \frac{\partial F}{\partial X(T)} \Delta X(T) - \lambda(T) \Delta X(T) + \lambda(0) \frac{\partial X(0)}{\partial X(T)} \Delta X(T)
+\]</span></p>
+<p>Since <span class="math inline">\(X(0)\)</span> is <strong>constant</strong>, its derivative with respect to <span class="math inline">\(X(T)\)</span> is:</p>
+<p><span class="math display">\[
+\frac{\partial X(0)}{\partial X(T)} = 0
+\]</span></p>
+<p>which simplifies the terminal term to:</p>
+<p><span class="math display">\[
+\frac{\partial F}{\partial X(T)} \Delta X(T) - \lambda(T) \Delta X(T)
+\]</span></p>
+</section>
+<section id="step-3-final-expression-for-delta-l" class="slide level2 smaller">
+<h2>Step 3: Final Expression for <span class="math inline">\(\Delta L\)</span></h2>
+<p>Now, combining everything:</p>
+<p><span class="math display">\[
+\Delta L = \int_0^T\left[
+\frac{\partial H}{\partial y(t)}\Delta y(t) +
+\frac{\partial H}{\partial X(t)}\Delta X(t) +
+\dot{\lambda}(t) \Delta X(t)
+\right]dt
++ \frac{\partial F}{\partial X(T)}\Delta X(T) - \lambda(T)\Delta X(T)
+\]</span></p>
+</section>
+<section class="slide level2">
+
+<p>For optimization <strong><span class="math inline">\(\Delta L = 0\)</span></strong>, we analyze:</p>
+<p><span class="math display">\[\Delta L = \int_0^T\left[
+\frac{\partial H}{\partial y(t)}\Delta y(t) +
+\frac{\partial H}{\partial X(t)}\Delta X(t) +
+\dot{\lambda}(t) \Delta X(t)
+\right]dt
++ \frac{\partial F}{\partial X(T)}\Delta X(T) - \lambda(T)\Delta X(T)\]</span></p>
+<p>Rearranging;</p>
+<p><span class="math display">\[\Delta L = \int_0^T\left[
+\frac{\partial H}{\partial y(t)}\Delta y(t) +
+\left(\frac{\partial H}{\partial X(t)} +
+\dot{\lambda}(t)\right)\Delta X(t)
+\right]dt
++ \left(\frac{\partial F}{\partial X(T)} - \lambda(T)\right)\Delta X(T)\]</span></p>
+<p>Since <strong><span class="math inline">\(\Delta L = 0\)</span></strong> must hold for any small variations <strong><span class="math inline">\(\Delta X(t)\)</span></strong> and <strong><span class="math inline">\(\Delta y(t)\)</span></strong>, each coefficient must be zero.</p>
+</section>
+<section id="principle-1" class="slide level2">
+<h2>Principle 1</h2>
+<p>Since <span class="math inline">\(\Delta y(t)\)</span> is arbitrary, we must have:</p>
+<p><span class="math display">\[\frac{\partial H}{\partial y(t)} = 0\]</span></p>
+<p>This is the <strong>control optimality condition</strong>, ensuring that the Hamiltonian is optimized with respect to the control <span class="math inline">\(y(t)\)</span>.</p>
+</section>
+<section id="principle-2" class="slide level2">
+<h2>Principle 2</h2>
+<p>From the integral term:</p>
+<p><span class="math display">\[\left[\frac{\partial H}{\partial X(t)} + \dot{\lambda}(t)\right] \Delta X(t)\]</span></p>
+<p>For arbitrary <span class="math inline">\(\Delta X(t)\)</span>, we get:</p>
+<p><span class="math display">\[\dot{\lambda}(t) = -\frac{\partial H}{\partial X(t)}\]</span></p>
+<p>This is the <strong>co-state equation</strong>, governing the evolution of the costate <span class="math inline">\(\lambda(t)\)</span>.</p>
+</section>
+<section id="principle-3" class="slide level2">
+<h2>Principle 3</h2>
+<p>From the terminal variation term:</p>
+<p><span class="math display">\[\left[\frac{\partial F}{\partial X(T)} - \lambda(T)\right] \Delta X(T)\]</span></p>
+<p>For arbitrary <span class="math inline">\(\Delta X(T)\)</span>, we get:</p>
+<p><span class="math display">\[\lambda(T) = \frac{\partial F}{\partial X(T)}\]</span></p>
+<p>This is setting the final value of the costate.</p>
+</section>
+<section id="summary-of-maximum-principle-conditions" class="slide level2">
+<h2>Summary of Maximum Principle Conditions</h2>
+<p>To satisfy <span class="math inline">\(\Delta L = 0\)</span>:</p>
+<ol type="1">
+<li><p><strong>Control Optimality Condition</strong><br>
+<span class="math display">\[\frac{\partial H}{\partial y(t)} = 0\]</span></p></li>
+<li><p><strong>Co-state Equation</strong><br>
+<span class="math display">\[\dot{\lambda}(t) = -\frac{\partial H}{\partial X(t)}\]</span></p></li>
+<li><p><strong>Terminal Condition</strong><br>
+<span class="math display">\[\lambda(T) = \frac{\partial F}{\partial X(T)}\]</span></p></li>
+</ol>
+<p>These are the necessary conditions from <strong>Pontryagin’s Maximum Principle</strong>.</p>
+</section>
+<section id="pontryagins-maximum-principle-interpretation" class="slide level2">
+<h2><strong>Pontryagin’s Maximum Principle: Interpretation</strong></h2>
+<ul>
+<li>Pontryagin’s Maximum Principle is named after the Russian mathematician Lev Pontryagin, who formulated this principle in 1956 along with his students.</li>
+<li>The principle was initially developed to solve optimization problems in control theory, specifically for maximizing the terminal speed of a rocket.</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="control-optimality-condition"><strong>1. Control Optimality Condition</strong></h3>
+<p><span class="math display">\[\frac{\partial H}{\partial y(t)}=0\]</span></p>
+<h4 id="interpretation"><strong>Interpretation:</strong></h4>
+<ul>
+<li>Ensures that the <strong>Hamiltonian is optimized</strong> with respect to the control variable <span class="math inline">\(y(t)\)</span>.<br>
+</li>
+<li>Determines the <strong>optimal control strategy</strong>.<br>
+</li>
+<li>The best action <span class="math inline">\(y^*(t)\)</span> must satisfy this equation.</li>
+</ul>
+<h4 id="example-renewable-resource-extraction"><strong>Example (Renewable Resource Extraction)</strong></h4>
+<ul>
+<li>Managing a <strong>fishery</strong>:
+<ul>
+<li><span class="math inline">\(y(t)\)</span> = harvesting rate<br>
+</li>
+<li><span class="math inline">\(X(t)\)</span> = fish population<br>
+</li>
+<li><span class="math inline">\(\frac{\partial H}{\partial y(t)}=0\)</span> ensures <strong>profit maximization while maintaining sustainability</strong>.</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="co-state-shadow-price-equation"><strong>2. Co-State (Shadow Price) Equation</strong></h3>
+<p><span class="math display">\[\dot{\lambda}(t)=-\frac{\partial H}{\partial X(t)}\]</span></p>
+<h4 id="interpretation-1"><strong>Interpretation:</strong></h4>
+<ul>
+<li>Describes how the <strong>shadow price <span class="math inline">\(\lambda(t)\)</span> evolves over time</strong>.<br>
+</li>
+<li><span class="math inline">\(\lambda(t)\)</span> represents <strong>the value of an extra unit of <span class="math inline">\(X(t)\)</span></strong>.<br>
+</li>
+<li>Shows how resource depletion <strong>affects future value</strong>.</li>
+</ul>
+<h4 id="example-groundwater-extraction"><strong>Example (Groundwater Extraction)</strong></h4>
+<ul>
+<li><span class="math inline">\(X(t)\)</span> = amount of water in aquifer<br>
+</li>
+<li><span class="math inline">\(y(t)\)</span> = extraction rate<br>
+</li>
+<li><span class="math inline">\(\lambda(t)\)</span> = future value of preserving water<br>
+</li>
+<li>If overuse today <strong>reduces future availability</strong>, then <span class="math inline">\(\lambda(t)\)</span> changes accordingly.</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="transversality-terminal-condition"><strong>3. Transversality (Terminal) Condition</strong></h3>
+<p><span class="math display">\[\lambda(T)=\frac{\partial F}{\partial X(T)}\]</span></p>
+<h4 id="interpretation-2"><strong>Interpretation:</strong></h4>
+<ul>
+<li>Determines the <strong>final value of shadow price <span class="math inline">\(\lambda(T)\)</span></strong>.<br>
+</li>
+<li>If there’s a <strong>terminal reward or penalty</strong>, it sets the final condition.<br>
+</li>
+<li>If no terminal condition exists, often <strong><span class="math inline">\(\lambda(T)=0\)</span></strong>.</li>
+</ul>
+<h4 id="example-deforestation-land-use"><strong>Example (Deforestation &amp; Land Use)</strong></h4>
+<ul>
+<li><span class="math inline">\(X(T)\)</span> = remaining forest at time <span class="math inline">\(T\)</span></li>
+<li><span class="math inline">\(\frac{\partial F}{\partial X(T)}\)</span> = future value of forest<br>
+</li>
+<li>Ensures that <strong>future benefits of conservation</strong> are included in today’s decisions.</li>
+</ul>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
@@ -669,7 +943,7 @@ t &amp;: \text{continuous time}
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: false,
+        slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',

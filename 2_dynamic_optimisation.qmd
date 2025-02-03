@@ -3,6 +3,7 @@ title: "Dynamic Optimization"
 format: 
   revealjs:
     smaller: true
+    slide-number: c/t
 ---
 
 ## Why are we even discussing Dynamic Optimization (DO)?
@@ -263,7 +264,7 @@ $\therefore$ Our objective is to
 
 
 \begin{align}
-\text{s.t.}\ \frac{d X(t)}{d t} = \dot{X(t)} &= f(y(t), X(t)) \ \to \text{equation of motion}\\
+\text{s.t.}\ \frac{d X(t)}{d t} = \dot{X}(t) &= f(y(t), X(t)) \ \to \text{equation of motion}\\
 & \qquad \qquad \qquad \qquad \text{or dynamic constraint}\\
 X(0) &= a \ \to \text{constant}
 \end{align}
@@ -278,9 +279,348 @@ t &: \text{continuous time}
 
 \end{align}
   
-  
 
+---
+
+To maximise the objective functional we will set a Lagrangian function:
 
 \begin{align}
-
+L &= \int_0^T[V(\cdot) + \lambda(t)\{f(\cdot) - \dot{X}(t)\}]dt + F(X(T))\\
+  &= \int_0^T[V(\cdot) + \lambda(t)f(\cdot) - \lambda(t)\dot{X}(t)]dt + F(X(T)) \ \dots (1)
 \end{align}
+
+:::: columns
+
+::: {.column width="40%"}
+Consider;
+
+\begin{align}
+-\int_0^T \lambda(t)\ \dot{X}(t)dt
+\end{align}
+
+The standard integration by parts formula is:
+
+\begin{equation}
+\int u \frac{dv}{dt} dt = u \cdot v - \int v \frac{du}{dt} dt
+\end{equation}
+
+:::
+
+::: {.column width="55%"}
+Let $u = \lambda(t)$
+
+Let $dv = \dot{X}(t)dt$
+
+
+$\frac{du}{dt} = \dot{\lambda}(t)$
+
+$v = X(t)$
+
+\begin{align}
+-\int_0^T \lambda(t)\ \dot{X}(t)dt &= -[\lambda(t)X(t)]_0^T + \int_0^T X(t)\dot{\lambda}(t)dt \\
+&= -\lambda(T)X(T) + \lambda(0)X(0) + \int_0^T X(t)\dot{\lambda}(t)dt\\
+\end{align}
+
+:::
+
+::::
+
+
+---
+
+\begin{align}
+\therefore -\int_0^T \lambda(t)\ \dot{X}(t)dt &= -[\lambda(t)X(t)]_0^T + \int_0^T X(t)\dot{\lambda}(t)dt \\
+&= -\lambda(T)X(T) + \lambda(0)X(0) + \int_0^T X(t)\dot{\lambda}(t)dt \ \dots (2)
+\end{align}
+
+Recall;
+
+\begin{align}
+L &= \int_0^T[V(\cdot) + \lambda(t)f(\cdot) - \lambda(t)\dot{X}(t)]dt + F(X(T))\ \dots (1)
+\end{align}
+
+Substituting the result from equation (2):
+
+\begin{align}
+L &= \int_0^T[V(\cdot) + \lambda(t)f(\cdot)]dt - \lambda(T)X(T) + \lambda(0)X(0) + \int_0^T X(t)\dot{\lambda}(t)dt + F(X(T)) \ \dots (3)
+\end{align}
+
+---
+
+Let us define
+
+\begin{align}
+H &= V(\cdot) + \lambda(t)f(\cdot) \\
+\implies H &= H(y(t), X(t), \lambda(t), t)
+\end{align}
+
+\begin{align}
+\therefore L &= \int_0^T[H(\cdot)]dt - \lambda(T)X(T) + \lambda(0)X(0) + \int_0^T X(t)\dot{\lambda}(t)dt + F(X(T)) \\
+&= \int_0^T[H(\cdot)]dt  + \int_0^T X(t)\dot{\lambda}(t)dt + F(X(T)- \lambda(T)X(T) + \lambda(0)X(0)) \\
+&= \int_0^T\left[H(\cdot)  + X(t)\dot{\lambda}(t)\right]dt + F(X(T)- \lambda(T)X(T) + \lambda(0)X(0))
+\end{align}
+
+We want to optimize $L$ by chosing $y(t)$ the control variable.
+
+Let us assume $y(t)$ is changed to $y(t) + \Delta y(t)$
+
+$\{y(t) \to y(t) + \Delta y(t)\}$: **Change in the rate of extraction.**
+
+$\{X(t) \to X(t) + \Delta X(t)\}$: **Change in the stock of resources.**
+
+
+---
+
+## Step 1: Define $L$
+
+The given functional is:
+
+$$
+L = \int_0^T\left[H(\cdot)  + X(t)\dot{\lambda}(t)\right]dt + F(X(T)- \lambda(T)X(T) + \lambda(0)X(0))
+$$
+
+where:
+
+- $H(\cdot)$ is the **Hamiltonian**.
+- $X(t)$ is the **state variable**.
+- $\lambda(t)$ is the **co-state (Lagrange multiplier)**.
+- $F(\cdot)$ is a function depending on the terminal state $X(T)$.
+
+## Why is it called the Hamiltonian?
+
+The **Hamiltonian** is named after **William Rowan Hamilton**, who developed **Hamiltonian mechanics** in the 19th century. Originally, it was used in **classical mechanics** to describe the total energy of a system:
+
+$$
+H(q, p, t) = T + V
+$$
+
+where:
+
+- $q$ = position variables (generalized coordinates),
+- $p$ = momentum variables (conjugate to $q$),
+- $T$ = kinetic energy,
+- $V$ = potential energy.
+
+
+
+
+## Step 2: Compute the Variation $\Delta L$
+
+The total variation of $L$ comes from two parts:
+
+1. **Variation of the Integral Term**:
+   $$
+   \int_0^T \left[H(\cdot) + X(t)\dot{\lambda}(t)\right] dt
+   $$
+2. **Variation of the Terminal Function $F(\cdot)$**:
+   $$
+   F(X(T)- \lambda(T)X(T) + \lambda(0)X(0))
+   $$
+
+
+
+## Step 2.1: Variation of the Integral Term {.smaller}
+
+Since $L$ is an integral, its variation follows:
+
+$$
+\Delta L = \int_0^T \Delta \left[ H(\cdot) + X(t)\dot{\lambda}(t) \right] dt + \Delta F(\cdot)
+$$
+
+Expanding $\Delta H(\cdot)$ using the **first-order Taylor expansion**:
+
+$$
+\Delta H(\cdot) = \frac{\partial H}{\partial y(t)} \Delta y(t) + \frac{\partial H}{\partial X(t)} \Delta X(t)
+$$
+
+Also, the variation of $X(t) \dot{\lambda}(t)$ gives:
+
+$$
+\Delta (X(t) \dot{\lambda}(t)) = \dot{\lambda}(t) \Delta X(t)
+$$
+
+
+
+
+$$
+\implies \int_0^T \left[ 
+\frac{\partial H}{\partial y(t)} \Delta y(t) + 
+\frac{\partial H}{\partial X(t)} \Delta X(t) + 
+\dot{\lambda}(t) \Delta X(t)
+\right] dt
+$$
+
+
+
+
+## Step 2.2: Variation of the Terminal Function $F(\cdot)$ {.smaller}
+
+The function $F(X(T)- \lambda(T)X(T) + \lambda(0)X(0))$ depends on $X(T)$, $\lambda(T)$, and $X(0)$. Its total variation is:
+
+$$
+\Delta F = \frac{\partial F}{\partial X(T)} \Delta X(T) - \lambda(T) \Delta X(T) + \lambda(0) \frac{\partial X(0)}{\partial X(T)} \Delta X(T)
+$$
+
+Since $X(0)$ is **constant**, its derivative with respect to $X(T)$ is:
+
+$$
+\frac{\partial X(0)}{\partial X(T)} = 0
+$$
+
+which simplifies the terminal term to:
+
+$$
+\frac{\partial F}{\partial X(T)} \Delta X(T) - \lambda(T) \Delta X(T)
+$$
+
+---
+
+## Step 3: Final Expression for $\Delta L$ {.smaller}
+
+Now, combining everything:
+
+$$
+\Delta L = \int_0^T\left[ 
+\frac{\partial H}{\partial y(t)}\Delta y(t) +
+\frac{\partial H}{\partial X(t)}\Delta X(t) +
+\dot{\lambda}(t) \Delta X(t)
+\right]dt
++ \frac{\partial F}{\partial X(T)}\Delta X(T) - \lambda(T)\Delta X(T)
+$$
+
+
+
+---
+
+For optimization **$\Delta L = 0$**, we analyze:
+
+$$\Delta L = \int_0^T\left[ 
+\frac{\partial H}{\partial y(t)}\Delta y(t) +
+\frac{\partial H}{\partial X(t)}\Delta X(t) +
+\dot{\lambda}(t) \Delta X(t)
+\right]dt
++ \frac{\partial F}{\partial X(T)}\Delta X(T) - \lambda(T)\Delta X(T)$$
+
+Rearranging;
+
+$$\Delta L = \int_0^T\left[ 
+\frac{\partial H}{\partial y(t)}\Delta y(t) +
+\left(\frac{\partial H}{\partial X(t)} +
+\dot{\lambda}(t)\right)\Delta X(t)
+\right]dt
++ \left(\frac{\partial F}{\partial X(T)} - \lambda(T)\right)\Delta X(T)$$
+
+Since **$\Delta L = 0$** must hold for any small variations **$\Delta X(t)$** and **$\Delta y(t)$**, each coefficient must be zero.
+
+
+
+## Principle 1
+
+Since $\Delta y(t)$ is arbitrary, we must have:
+
+$$\frac{\partial H}{\partial y(t)} = 0$$
+
+This is the **control optimality condition**, ensuring that the Hamiltonian is optimized with respect to the control $y(t)$.
+
+---
+
+##  Principle 2
+
+From the integral term:
+
+$$\left[\frac{\partial H}{\partial X(t)} + \dot{\lambda}(t)\right] \Delta X(t)$$
+
+For arbitrary $\Delta X(t)$, we get:
+
+$$\dot{\lambda}(t) = -\frac{\partial H}{\partial X(t)}$$
+
+This is the **co-state equation**, governing the evolution of the costate $\lambda(t)$.
+
+---
+
+## Principle 3
+
+From the terminal variation term:
+
+$$\left[\frac{\partial F}{\partial X(T)} - \lambda(T)\right] \Delta X(T)$$
+
+For arbitrary $\Delta X(T)$, we get:
+
+$$\lambda(T) = \frac{\partial F}{\partial X(T)}$$
+
+This is setting the final value of the costate.
+
+---
+
+## Summary of Maximum Principle Conditions
+
+To satisfy $\Delta L = 0$:
+
+1. **Control Optimality Condition**  
+   $$\frac{\partial H}{\partial y(t)} = 0$$
+
+2. **Co-state Equation**  
+   $$\dot{\lambda}(t) = -\frac{\partial H}{\partial X(t)}$$
+
+3. **Terminal Condition**  
+   $$\lambda(T) = \frac{\partial F}{\partial X(T)}$$
+
+These are the necessary conditions from **Pontryagin's Maximum Principle**.
+
+## **Pontryagin's Maximum Principle: Interpretation**
+
+- Pontryagin's Maximum Principle is named after the Russian mathematician Lev Pontryagin, who formulated this principle in 1956 along with his students. 
+- The principle was initially developed to solve optimization problems in control theory, specifically for maximizing the terminal speed of a rocket.
+
+---
+
+### **1. Control Optimality Condition**  
+$$\frac{\partial H}{\partial y(t)}=0$$  
+
+#### **Interpretation:**  
+- Ensures that the **Hamiltonian is optimized** with respect to the control variable $y(t)$.  
+- Determines the **optimal control strategy**.  
+- The best action $y^*(t)$ must satisfy this equation.  
+
+#### **Example (Renewable Resource Extraction)**  
+- Managing a **fishery**:  
+  - $y(t)$ = harvesting rate  
+  - $X(t)$ = fish population  
+  - $\frac{\partial H}{\partial y(t)}=0$ ensures **profit maximization while maintaining sustainability**.
+
+---
+
+### **2. Co-State (Shadow Price) Equation**  
+$$\dot{\lambda}(t)=-\frac{\partial H}{\partial X(t)}$$  
+
+#### **Interpretation:**  
+- Describes how the **shadow price $\lambda(t)$ evolves over time**.  
+- $\lambda(t)$ represents **the value of an extra unit of $X(t)$**.  
+- Shows how resource depletion **affects future value**.  
+
+#### **Example (Groundwater Extraction)**  
+- $X(t)$ = amount of water in aquifer  
+- $y(t)$ = extraction rate  
+- $\lambda(t)$ = future value of preserving water  
+- If overuse today **reduces future availability**, then $\lambda(t)$ changes accordingly.
+
+---
+
+### **3. Transversality (Terminal) Condition**  
+$$\lambda(T)=\frac{\partial F}{\partial X(T)}$$  
+
+#### **Interpretation:**  
+- Determines the **final value of shadow price $\lambda(T)$**.  
+- If there's a **terminal reward or penalty**, it sets the final condition.  
+- If no terminal condition exists, often **$\lambda(T)=0$**.  
+
+#### **Example (Deforestation & Land Use)**  
+- $X(T)$ = remaining forest at time $T$
+- $\frac{\partial F}{\partial X(T)}$ = future value of forest  
+- Ensures that **future benefits of conservation** are included in today’s decisions.
+
+
+
+
+
+
