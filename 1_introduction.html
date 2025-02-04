@@ -8,7 +8,7 @@
 <link href="1_introduction_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="1_introduction_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="1_introduction_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.555">
+  <meta name="generator" content="quarto-1.5.57">
 
   <title>Introduction to Resource Economics</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -434,6 +434,52 @@
 </ul>
 <p>where <span class="math inline">\(r\)</span> is the rate of interest or the discount rate.</p>
 </section>
+<section id="why-do-we-discount" class="slide level2 smaller">
+<h2>Why Do We Discount?</h2>
+<ul>
+<li>Imagine you are given a choice:
+<ul>
+<li>Receive <span class="math inline">\(₹100\)</span> today.</li>
+<li>Receive <span class="math inline">\(₹100\)</span> one year from now.</li>
+</ul></li>
+<li>Most people would prefer <span class="math inline">\(₹100\)</span> today. Why? Because money today is worth more than the same amount in the future. This is due to:
+<ul>
+<li>Opportunity cost: You could invest the money today and earn interest</li>
+<li>Inflation: The value of money tends to decrease over time.</li>
+<li>Uncertainty: The future is uncertain; you may not receive the promised amount.</li>
+</ul></li>
+<li>To account for this, we use discounting, which adjusts future values to their present worth.</li>
+</ul>
+</section>
+<section id="one-period-discounting" class="slide level2">
+<h2>One-Period Discounting</h2>
+<p>In one-period discounting, we find the <strong>present value (PV)</strong> of a future amount by dividing by <span class="math inline">\((1 + r)\)</span>.</p>
+<p><span class="math display">\[
+PV = \frac{V_1}{(1 + r)}
+\]</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(V_1\)</span> = future value received in one period,</li>
+<li><span class="math inline">\(r\)</span> = discount rate.</li>
+</ul>
+</section>
+<section id="example-timber-harvesting" class="slide level2">
+<h2>Example: Timber Harvesting</h2>
+<p>Suppose a forest owner expects <strong>₹ 1000 next year</strong>, and the discount rate is <strong>5%</strong>.</p>
+<p>The present value today is:</p>
+<p><span class="math display">\[
+PV = \frac{1000}{(1.05)} = 952.38
+\]</span></p>
+<p>So, <strong>₹ 1000 next year</strong> is worth <strong>₹ 952.38 today</strong>.</p>
+</section>
+<section id="interpretation-in-resource-economics" class="slide level2">
+<h2>Interpretation in Resource Economics</h2>
+<ul>
+<li>If <strong><span class="math inline">\(PV &gt;\)</span></strong> current timber price → <strong>Wait to harvest next year</strong>.</li>
+<li>If <strong><span class="math inline">\(PV &lt;\)</span></strong> current timber price → <strong>Harvest now</strong>.</li>
+</ul>
+<p>Higher discount rates <strong>decrease</strong> the present value of future benefits, <strong>incentivizing earlier resource extraction</strong>.</p>
+</section>
 <section id="section" class="slide level2 incremental">
 <h2></h2>
 <ul>
@@ -570,6 +616,7 @@ p_T = mc_b \dots (2)
 \quad \vdots &amp;= \ \vdots \quad + \quad \vdots\\
 \implies p_t &amp;= mc_e + \frac{mc_b-mc_e}{(1+r)^{T-t}} \ \forall \ t&lt;T
 \end{align}\]</span></p>
+<p><span class="math inline">\(p_t\)</span> is the price of the existing resource at time <span class="math inline">\(t\)</span> in the presence of a backstop.</p>
 </section>
 <section class="slide level2">
 
@@ -927,18 +974,7 @@ p_T = mc_b \dots (2)
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -970,7 +1006,29 @@ p_T = mc_b \dots (2)
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -978,7 +1036,7 @@ p_T = mc_b \dots (2)
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {
