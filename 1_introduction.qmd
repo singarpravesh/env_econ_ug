@@ -1,6 +1,8 @@
 ---
 title: "Introduction to Resource Economics"
-format: revealjs
+format: 
+  revealjs:
+    slide-number: c/t
 ---
 
 
@@ -281,13 +283,19 @@ where;
 
 
 - Let us assume we have some amount of NRR which we are going to use in 2 periods;
-  - $0: 1^{st} \text{period}$
-  - $1: \text{last period}$
-  - $p_0: \text{price at } t_0$
-  - $p_1: \text{price at } t_1$
+  $0: 1^{st} \text{period}$
+  
+  $1: \text{last period}$
+  
+  $p_0: \text{price at } t_0$
+  
+  $p_1: \text{price at } t_1$
+  
 - The resource owner has to decide **whether to use the resource today or keep it for tomorrow**.
-  - $p_0 - mc_e$: Today's benefit
-  - $p_1 - mc_e$: Tomorrow's benefit (if the resource is left for tomorrow)
+  
+  $p_0 - mc_e$: Today's benefit
+  
+  $p_1 - mc_e$: Tomorrow's benefit (if the resource is left for tomorrow)
   
 ---
 
@@ -331,7 +339,7 @@ p_t &= mc_e + (p_0 - mc_e)(1 + r)^t\\
 - This is the **price path** or a **series of optimal prices** for optimal extraction at various points in time.
 - This indicates that $p_t$ is a **dynamic optimization** problem rather than a static optimization.
 
----
+## {.smaller}
 
 
 \begin{align}
@@ -341,7 +349,13 @@ r &= \frac{(p_1 - mc_e)-(p_0 - mc_e)}{(p_0 - mc_e)}
 \end{align}
 
 - This $p - mc_e$ is also known as **Marginal Resource Rent**
-  - where; $p_1: \text{price of NRR}\\ mc_e: \text{cost of extraction of one unit of NRR}\\ r: \text{growth of marginal resource rent}$
+  where; 
+  
+  $p_1$: price of NRR 
+    
+  $mc_e$: cost of extraction of one unit of NRR 
+  
+  $r$: growth of marginal resource rent
 
 ---
 
@@ -375,6 +389,15 @@ r &= \frac{(p_1 - mc_e)-(p_0 - mc_e)}{(p_0 - mc_e)}
 
 ---
 
+```{r}
+#| echo: false
+
+knitr::include_graphics("images/fig_1.png")
+```
+
+
+---
+
 - **Shift date**: the time at which the NRR gets exhausted.
 - Let us denote this as $T$.
 - The price path of the existing NRR at time $T$ is
@@ -382,16 +405,108 @@ r &= \frac{(p_1 - mc_e)-(p_0 - mc_e)}{(p_0 - mc_e)}
 $$
 p_T = mc_e + (p_0 - mc_e)(1 + r)^T ... (1)
 $$
-- Since there is no user cost for backstop,
-$$
-\begin{align}
-p_T = mc_b \ldots (2)\\
-\text{where, } p_T:\text{price of the backstop}\\
-\\
-\text{From (1) and (2), we get}\\
-mc_b &= mc_e + (p_0 - mc_e)(1+r)^T\\
-p_0 - mc_e &= \frac{mc_b-mc_e}{(1+r)^T}
-\end{align}
-$$
 
 ---
+
+- Since there is no user cost for backstop,
+
+\begin{align}
+p_T = mc_b \dots (2)
+\end{align}
+
+where, 
+
+$p_T$: price of the backstop
+
+From (1) and (2), we get
+
+\begin{align}
+\implies mc_b &= mc_e + (p_0 - mc_e)(1+r)^T\\
+\implies p_0 - mc_e &= \frac{mc_b-mc_e}{(1+r)^T}\\
+\implies p_0 &= mc_e + \frac{mc_b-mc_e}{(1+r)^{T-0}}
+\end{align}
+
+---
+
+\begin{align}
+\because p_0 - mc_e &= \frac{mc_b-mc_e}{(1+r)^T}\\
+\implies p_0 &= mc_e + \frac{mc_b-mc_e}{(1+r)^{T-0}}\\
+\quad \vdots &= \ \vdots \quad + \quad \vdots\\
+\implies p_t &= mc_e + \frac{mc_b-mc_e}{(1+r)^{T-t}} \ \forall \ t<T
+\end{align}
+
+---
+
+Insights
+
+1. Marginal cost of extraction for the backstop $mc_b$ determines the price path of the existing resource at $t$.
+2. If $mc_b$ is high i.e. the probability of harvesting a backstop is low, then $p_t$ will also be high and vice-versa.
+3. $mc_b$ sets an upper limit on the price of the existing resource at time $t$.
+
+
+---
+
+**Sample Questions:**
+
+1. What defines a natural resource, and how do renewable and non-renewable resources differ?
+2. Explain why even renewable resources can become exhausted. Provide an example.
+3. What is the significance of Hotelling's Rule in resource extraction economics?
+4. How does the concept of "marginal user cost" impact the pricing of non-renewable resources?
+5. A resource owner has 1000 kg of coal to use over 10 years. What factors would influence their extraction strategy?
+
+---
+
+
+6. How does the discount rate affect a resource owner's decision to extract a resource today versus tomorrow?
+7. What role does a "backstop" play in determining the optimal extraction path of a non-renewable resource?
+8. Why can't the price of a non-renewable resource like petrol increase indefinitely?
+9. Compare and contrast the economic considerations for extracting renewable versus non-renewable resources.
+10. How might technological innovations impact resource extraction strategies?
+
+---
+
+```{r}
+#| echo: false
+#| eval: false
+
+c("
+Answers:
+1. A natural resource is defined as a naturally occurring resource that can be made available for mankind under feasible social, economic, and technological frameworks. Renewable resources (like forests, fishery, solar energy) have a generating capacity, while non-renewable resources (like coal, oil) lack regenerative capacity over an economically feasible time horizon.
+
+2. Renewable resources can become exhausted when the rate of extraction exceeds the rate of growth. For example, a forest can be depleted if trees are cut down faster than they can regrow, leading to permanent ecosystem damage and resource depletion.
+
+3. Hotelling's Rule (1931) states that the most socially and economically profitable extraction path of a non-renewable resource is one where the marginal resource rent grows at the rate of interest or discount rate. This principle helps optimize the long-term economic value of finite resources.
+
+4. Marginal user cost represents the opportunity cost of extracting a resource today, which reduces its availability for future use. This additional cost component means that for non-renewable resources, pricing is not simply marginal cost (p = mc), but includes an opportunity cost component (p = mce + muc).
+
+5. Factors influencing coal extraction strategy include:
+- Current market prices
+- Expected future prices
+- Extraction costs
+- Discount rate
+- Technological capabilities
+- Environmental regulations
+- Alternative energy availability
+
+6. The discount rate determines the present value of future benefits. A higher discount rate makes immediate extraction more attractive, as future benefits are heavily discounted. Conversely, a lower discount rate might encourage resource conservation for future use.
+
+7. A backstop is an alternative resource or technology that provides a substitute when the primary resource becomes scarce or expensive. It plays a crucial role in determining the optimal extraction path by setting an upper limit on the price of the existing resource and influencing extraction decisions.
+
+8. The price of a non-renewable resource like petrol cannot increase indefinitely because:
+- Alternatives or substitute technologies will emerge
+- A backstop technology will reduce demand
+- The market will seek more efficient or cheaper energy sources
+- Technological innovations can create new extraction or replacement methods
+
+9. Renewable resources require sustainable management to maintain regenerative capacity, while non-renewable resources demand strategic extraction to maximize long-term economic value. Renewable resources focus on growth rates, while non-renewable resources concentrate on optimal depletion strategies.
+
+10. Technological innovations can impact resource extraction strategies by:
+- Reducing extraction costs
+- Improving efficiency of resource use
+- Creating alternative technologies
+- Enabling extraction of previously inaccessible resources
+- Developing more sustainable extraction methods
+")
+
+```
+

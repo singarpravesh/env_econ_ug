@@ -415,18 +415,13 @@
 <section class="slide level2">
 
 <ul>
-<li>Let us assume we have some amount of NRR which we are going to use in 2 periods;
-<ul>
-<li><span class="math inline">\(0: 1^{st} \text{period}\)</span></li>
-<li><span class="math inline">\(1: \text{last period}\)</span></li>
-<li><span class="math inline">\(p_0: \text{price at } t_0\)</span></li>
-<li><span class="math inline">\(p_1: \text{price at } t_1\)</span></li>
-</ul></li>
-<li>The resource owner has to decide <strong>whether to use the resource today or keep it for tomorrow</strong>.
-<ul>
-<li><span class="math inline">\(p_0 - mc_e\)</span>: Today’s benefit</li>
-<li><span class="math inline">\(p_1 - mc_e\)</span>: Tomorrow’s benefit (if the resource is left for tomorrow)</li>
-</ul></li>
+<li><p>Let us assume we have some amount of NRR which we are going to use in 2 periods; <span class="math inline">\(0: 1^{st} \text{period}\)</span></p>
+<p><span class="math inline">\(1: \text{last period}\)</span></p>
+<p><span class="math inline">\(p_0: \text{price at } t_0\)</span></p>
+<p><span class="math inline">\(p_1: \text{price at } t_1\)</span></p></li>
+<li><p>The resource owner has to decide <strong>whether to use the resource today or keep it for tomorrow</strong>.</p>
+<p><span class="math inline">\(p_0 - mc_e\)</span>: Today’s benefit</p>
+<p><span class="math inline">\(p_1 - mc_e\)</span>: Tomorrow’s benefit (if the resource is left for tomorrow)</p></li>
 </ul>
 </section>
 <section class="slide level2">
@@ -473,18 +468,18 @@ p_t &amp;= mc_e + (p_0 - mc_e)(1 + r)^t\\
 <li>This indicates that <span class="math inline">\(p_t\)</span> is a <strong>dynamic optimization</strong> problem rather than a static optimization.</li>
 </ul>
 </section>
-<section class="slide level2">
-
+<section id="section-1" class="slide level2 smaller">
+<h2></h2>
 <p><span class="math display">\[\begin{align}
 \because p_1 &amp;= mc_e + (p_0 - mc_e)(1 + r) \\
 (1+r) &amp;= \frac{(p_1 - mc_e)}{(p_0 - mc_e)}  \\
 r &amp;= \frac{(p_1 - mc_e)-(p_0 - mc_e)}{(p_0 - mc_e)}
 \end{align}\]</span></p>
 <ul>
-<li>This <span class="math inline">\(p - mc_e\)</span> is also known as <strong>Marginal Resource Rent</strong>
-<ul>
-<li>where; <span class="math inline">\(p_1: \text{price of NRR}\\ mc_e: \text{cost of extraction of one unit of NRR}\\ r: \text{growth of marginal resource rent}\)</span></li>
-</ul></li>
+<li><p>This <span class="math inline">\(p - mc_e\)</span> is also known as <strong>Marginal Resource Rent</strong> where;</p>
+<p><span class="math inline">\(p_1\)</span>: price of NRR</p>
+<p><span class="math inline">\(mc_e\)</span>: cost of extraction of one unit of NRR</p>
+<p><span class="math inline">\(r\)</span>: growth of marginal resource rent</p></li>
 </ul>
 </section>
 <section class="slide level2">
@@ -537,6 +532,10 @@ r &amp;= \frac{(p_1 - mc_e)-(p_0 - mc_e)}{(p_0 - mc_e)}
 </section>
 <section class="slide level2">
 
+
+<img data-src="images/fig_1.png" width="245" class="r-stretch"></section>
+<section class="slide level2">
+
 <ul>
 <li><strong>Shift date</strong>: the time at which the NRR gets exhausted.</li>
 <li>Let us denote this as <span class="math inline">\(T\)</span>.</li>
@@ -544,16 +543,63 @@ r &amp;= \frac{(p_1 - mc_e)-(p_0 - mc_e)}{(p_0 - mc_e)}
 </ul>
 <p><span class="math display">\[
 p_T = mc_e + (p_0 - mc_e)(1 + r)^T ... (1)
-\]</span> - Since there is no user cost for backstop, <span class="math display">\[
-\begin{align}
-p_T = mc_b \ldots (2)\\
-\text{where, } p_T:\text{price of the backstop}\\
-\\
-\text{From (1) and (2), we get}\\
-mc_b &amp;= mc_e + (p_0 - mc_e)(1+r)^T\\
-p_0 - mc_e &amp;= \frac{mc_b-mc_e}{(1+r)^T}
-\end{align}
 \]</span></p>
+</section>
+<section class="slide level2">
+
+<ul>
+<li>Since there is no user cost for backstop,</li>
+</ul>
+<p><span class="math display">\[\begin{align}
+p_T = mc_b \dots (2)
+\end{align}\]</span></p>
+<p>where,</p>
+<p><span class="math inline">\(p_T\)</span>: price of the backstop</p>
+<p>From (1) and (2), we get</p>
+<p><span class="math display">\[\begin{align}
+\implies mc_b &amp;= mc_e + (p_0 - mc_e)(1+r)^T\\
+\implies p_0 - mc_e &amp;= \frac{mc_b-mc_e}{(1+r)^T}\\
+\implies p_0 &amp;= mc_e + \frac{mc_b-mc_e}{(1+r)^{T-0}}
+\end{align}\]</span></p>
+</section>
+<section class="slide level2">
+
+<p><span class="math display">\[\begin{align}
+\because p_0 - mc_e &amp;= \frac{mc_b-mc_e}{(1+r)^T}\\
+\implies p_0 &amp;= mc_e + \frac{mc_b-mc_e}{(1+r)^{T-0}}\\
+\quad \vdots &amp;= \ \vdots \quad + \quad \vdots\\
+\implies p_t &amp;= mc_e + \frac{mc_b-mc_e}{(1+r)^{T-t}} \ \forall \ t&lt;T
+\end{align}\]</span></p>
+</section>
+<section class="slide level2">
+
+<p>Insights</p>
+<ol type="1">
+<li>Marginal cost of extraction for the backstop <span class="math inline">\(mc_b\)</span> determines the price path of the existing resource at <span class="math inline">\(t\)</span>.</li>
+<li>If <span class="math inline">\(mc_b\)</span> is high i.e.&nbsp;the probability of harvesting a backstop is low, then <span class="math inline">\(p_t\)</span> will also be high and vice-versa.</li>
+<li><span class="math inline">\(mc_b\)</span> sets an upper limit on the price of the existing resource at time <span class="math inline">\(t\)</span>.</li>
+</ol>
+</section>
+<section class="slide level2">
+
+<p><strong>Sample Questions:</strong></p>
+<ol type="1">
+<li>What defines a natural resource, and how do renewable and non-renewable resources differ?</li>
+<li>Explain why even renewable resources can become exhausted. Provide an example.</li>
+<li>What is the significance of Hotelling’s Rule in resource extraction economics?</li>
+<li>How does the concept of “marginal user cost” impact the pricing of non-renewable resources?</li>
+<li>A resource owner has 1000 kg of coal to use over 10 years. What factors would influence their extraction strategy?</li>
+</ol>
+</section>
+<section class="slide level2">
+
+<ol start="6" type="1">
+<li>How does the discount rate affect a resource owner’s decision to extract a resource today versus tomorrow?</li>
+<li>What role does a “backstop” play in determining the optimal extraction path of a non-renewable resource?</li>
+<li>Why can’t the price of a non-renewable resource like petrol increase indefinitely?</li>
+<li>Compare and contrast the economic considerations for extracting renewable versus non-renewable resources.</li>
+<li>How might technological innovations impact resource extraction strategies?</li>
+</ol>
 </section>
 <section class="slide level2">
 
@@ -614,7 +660,7 @@ p_0 - mc_e &amp;= \frac{mc_b-mc_e}{(1+r)^T}
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: false,
+        slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',
