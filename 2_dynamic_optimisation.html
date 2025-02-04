@@ -8,7 +8,7 @@
 <link href="2_dynamic_optimisation_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="2_dynamic_optimisation_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="2_dynamic_optimisation_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.555">
+  <meta name="generator" content="quarto-1.5.57">
 
   <title>Dynamic Optimization</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -394,8 +394,7 @@ X^* \ , \ Y^*&amp;: \text{Solution to the optimization problem} \\
 <li><span class="math inline">\(A\)</span> : initial capital stock</li>
 <li><span class="math inline">\(Z\)</span> : terminal capital stock</li>
 </ul>
-</div>
-</div>
+</div></div>
 </section>
 <section id="section-1" class="slide level2 smaller">
 <h2></h2>
@@ -415,8 +414,7 @@ X^* \ , \ Y^*&amp;: \text{Solution to the optimization problem} \\
 <li>Suppose the economy starts at <span class="math inline">\((0,A)\)</span> and wants to reach <span class="math inline">\((T,Z)\)</span>, the decision variable will be <strong>investment in each period</strong>.</li>
 <li>There are different paths to reach the terminal state from the initial state.</li>
 </ul>
-</div>
-</div>
+</div></div>
 </section>
 <section id="section-2" class="slide level2 smaller">
 <h2></h2>
@@ -437,8 +435,7 @@ X^* \ , \ Y^*&amp;: \text{Solution to the optimization problem} \\
 <li>The initial thought might be to choose the path <span class="math inline">\(A \to X\)</span>.</li>
 <li>However, the total cost along the entire path must be considered while choosing the optimal path.</li>
 </ul>
-</div>
-</div>
+</div></div>
 </section>
 <section id="section-3" class="slide level2 smaller">
 <h2></h2>
@@ -459,8 +456,7 @@ X^* \ , \ Y^*&amp;: \text{Solution to the optimization problem} \\
 <li>Here costs (in billions of ₹) are represented in circles.</li>
 <li>In this case, the path <span class="math inline">\(ACEHJZ\)</span> gives the optimal solution with <span class="math inline">\(₹14\)</span> billion as the minimum cost.</li>
 </ul>
-</div>
-</div>
+</div></div>
 </section>
 <section id="section-4" class="slide level2 smaller">
 <h2></h2>
@@ -481,8 +477,7 @@ X^* \ , \ Y^*&amp;: \text{Solution to the optimization problem} \\
 <li>Each possible path is seen to travel through an infinite number of stages in the interval <span class="math inline">\([0, T]\)</span>.</li>
 <li>E.g. to transport a load of cargo from location <span class="math inline">\(A\)</span> to <span class="math inline">\(Z\)</span> at minimum travel cost by selecting an appropriate travel path.</li>
 </ul>
-</div>
-</div>
+</div></div>
 </section>
 <section id="important-elements-of-do" class="slide level2">
 <h2>Important elements of DO</h2>
@@ -511,8 +506,7 @@ X^* \ , \ Y^*&amp;: \text{Solution to the optimization problem} \\
 <li><p>A function maps elements from one set (the domain) to another set (the codomain). For example, <span class="math inline">\(f(x) = x²\)</span> maps real numbers to real numbers.</p></li>
 <li><p>A functional, on the other hand, is a special type of function that takes another function as its input and returns a number (or more generally, a scalar value) as its output. In other words, a functional is a <strong>“function of functions.”</strong></p></li>
 </ul>
-</div>
-</div>
+</div></div>
 </section>
 <section id="section-5" class="slide level2 smaller">
 <h2></h2>
@@ -573,8 +567,7 @@ X^* \ , \ Y^*&amp;: \text{Solution to the optimization problem} \\
 <li>Either <span class="math inline">\(T\)</span> or <span class="math inline">\(Z\)</span> or both may be variable in DO.</li>
 <li>There are alternatives regarding the <strong>terminal situation</strong>.</li>
 </ul>
-</div>
-</div>
+</div></div>
 </section>
 <section id="dynamic-optimization" class="slide level2">
 <h2>Dynamic Optimization</h2>
@@ -636,8 +629,7 @@ L &amp;= \int_0^T[V(\cdot) + \lambda(t)\{f(\cdot) - \dot{X}(t)\}]dt + F(X(T))\\
 -\int_0^T \lambda(t)\ \dot{X}(t)dt &amp;= -[\lambda(t)X(t)]_0^T + \int_0^T X(t)\dot{\lambda}(t)dt \\
 &amp;= -\lambda(T)X(T) + \lambda(0)X(0) + \int_0^T X(t)\dot{\lambda}(t)dt\\
 \end{align}\]</span></p>
-</div>
-</div>
+</div></div>
 </section>
 <section class="slide level2">
 
@@ -687,17 +679,17 @@ L = \int_0^T\left[H(\cdot)  + X(t)\dot{\lambda}(t)\right]dt + F(X(T)- \lambda(T)
 </section>
 <section id="why-is-it-called-the-hamiltonian" class="slide level2">
 <h2>Why is it called the Hamiltonian?</h2>
-<p>The <strong>Hamiltonian</strong> is named after <strong>William Rowan Hamilton</strong>, who developed <strong>Hamiltonian mechanics</strong> in the 19th century. Originally, it was used in <strong>classical mechanics</strong> to describe the total energy of a system:</p>
-<p><span class="math display">\[
-H(q, p, t) = T + V
-\]</span></p>
-<p>where:</p>
-<ul>
-<li><span class="math inline">\(q\)</span> = position variables (generalized coordinates),</li>
-<li><span class="math inline">\(p\)</span> = momentum variables (conjugate to <span class="math inline">\(q\)</span>),</li>
-<li><span class="math inline">\(T\)</span> = kinetic energy,</li>
-<li><span class="math inline">\(V\)</span> = potential energy.</li>
-</ul>
+<p>The <strong>Hamiltonian</strong> is named after <strong>Sir William Rowan Hamilton</strong>, who developed <strong>Hamiltonian mechanics</strong> in the 19th century. Originally, it was used in <strong>classical mechanics</strong> to describe the total energy of a system:</p>
+<p>In Physics</p>
+<p><span class="math display">\[\begin{align}
+H &amp;= T(q, p, t) + V(q, t) \\
+\implies \text{Total Energy} &amp;= \text{Kinetic Energy} + \text{Potential Energy}
+\end{align}\]</span></p>
+<p>And in Economics</p>
+<p><span class="math display">\[\begin{align}
+H &amp;= V(y(t), X(t), t) + \lambda(t)f(y(t), X(t)) \\
+\implies \text{Total Benefits or Costs} &amp;= \text{Flow Benefit or Costs} + \text{Stock Benefit or Costs}
+\end{align}\]</span></p>
 </section>
 <section id="step-2-compute-the-variation-delta-l" class="slide level2">
 <h2>Step 2: Compute the Variation <span class="math inline">\(\Delta L\)</span></h2>
@@ -1210,18 +1202,7 @@ F(X(T)- \lambda(T)X(T) + \lambda(0)X(0))
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1253,7 +1234,29 @@ F(X(T)- \lambda(T)X(T) + \lambda(0)X(0))
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1261,7 +1264,7 @@ F(X(T)- \lambda(T)X(T) + \lambda(0)X(0))
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

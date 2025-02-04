@@ -388,19 +388,22 @@ where:
 
 ## Why is it called the Hamiltonian?
 
-The **Hamiltonian** is named after **William Rowan Hamilton**, who developed **Hamiltonian mechanics** in the 19th century. Originally, it was used in **classical mechanics** to describe the total energy of a system:
+The **Hamiltonian** is named after **Sir William Rowan Hamilton**, who developed **Hamiltonian mechanics** in the 19th century. Originally, it was used in **classical mechanics** to describe the total energy of a system:
 
-$$
-H(q, p, t) = T + V
-$$
+In Physics
 
-where:
+\begin{align}
+H &= T(q, p, t) + V(q, t) \\
+\implies \text{Total Energy} &= \text{Kinetic Energy} + \text{Potential Energy}
+\end{align}
 
-- $q$ = position variables (generalized coordinates),
-- $p$ = momentum variables (conjugate to $q$),
-- $T$ = kinetic energy,
-- $V$ = potential energy.
 
+And in Economics
+
+\begin{align}
+H &= V(y(t), X(t), t) + \lambda(t)f(y(t), X(t)) \\ 
+\implies \text{Total Benefits or Costs} &= \text{Flow Benefit or Costs} + \text{Stock Benefit or Costs}
+\end{align}
 
 
 
@@ -550,7 +553,7 @@ $$\lambda(T) = \frac{\partial F}{\partial X(T)}$$
 
 This is setting the final value of the costate.
 
----
+
 
 ## Summary of Maximum Principle Conditions
 
@@ -618,7 +621,6 @@ $$\lambda(T)=\frac{\partial F}{\partial X(T)}$$
 - $X(T)$ = remaining forest at time $T$
 - $\frac{\partial F}{\partial X(T)}$ = future value of forest  
 - Ensures that **future benefits of conservation** are included in today’s decisions.
-
 
 
 
