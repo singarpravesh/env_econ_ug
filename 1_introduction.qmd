@@ -307,6 +307,60 @@ $$
 
 where $r$ is the rate of interest or the discount rate.
 
+## Why Do We Discount? {.smaller}
+
+- Imagine you are given a choice:
+  - Receive $₹100$ today.
+  - Receive $₹100$ one year from now.
+
+- Most people would prefer $₹100$ today. Why? Because money today is worth more than the same amount in the future. This is due to:
+  - Opportunity cost: You could invest the money today and earn interest
+  - Inflation: The value of money tends to decrease over time.
+  - Uncertainty: The future is uncertain; you may not receive the promised amount.
+
+- To account for this, we use discounting, which adjusts future values to their present worth.
+
+
+## One-Period Discounting
+
+In one-period discounting, we find the **present value (PV)** of a future amount by dividing by $(1 + r)$.
+
+$$ 
+PV = \frac{V_1}{(1 + r)} 
+$$
+
+where:
+
+- $V_1$ = future value received in one period,
+- $r$ = discount rate.
+
+---
+
+## Example: Timber Harvesting
+
+Suppose a forest owner expects **₹ 1000 next year**, and the discount rate is **5%**.
+
+The present value today is:
+
+$$ 
+PV = \frac{1000}{(1.05)} = 952.38 
+$$
+
+So, **₹ 1000 next year** is worth **₹ 952.38 today**.
+
+---
+
+## Interpretation in Resource Economics
+
+- If **$PV >$** current timber price → **Wait to harvest next year**.
+- If **$PV <$** current timber price → **Harvest now**.
+
+
+Higher discount rates **decrease** the present value of future benefits, **incentivizing earlier resource extraction**.
+
+---
+
+
 ## {.incremental}
 
 - We are converting tomorrow's benefit to today's benefit by discounting *and the discount rate is $r$*.
@@ -434,6 +488,9 @@ From (1) and (2), we get
 \quad \vdots &= \ \vdots \quad + \quad \vdots\\
 \implies p_t &= mc_e + \frac{mc_b-mc_e}{(1+r)^{T-t}} \ \forall \ t<T
 \end{align}
+
+$p_t$ is the price of the existing resource at time $t$ in the presence of a backstop.
+
 
 ---
 
