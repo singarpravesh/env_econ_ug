@@ -878,6 +878,41 @@ F(X(T)- \lambda(T)X(T) + \lambda(0)X(0))
 </li>
 <li>Ensures that <strong>future benefits of conservation</strong> are included in today’s decisions.</li>
 </ul>
+</section>
+<section class="slide level2">
+
+<p>Recall,</p>
+<p><span class="math display">\[
+H = V(\cdot) + \lambda (t)f(\cdot)
+\]</span></p>
+<p>where;</p>
+<p><span class="math inline">\(V(\cdot)\)</span>: flow benefit</p>
+<p><span class="math inline">\(\lambda (t)f(\cdot)\)</span>: future benefit or value</p>
+<p><span class="math inline">\(\lambda (t)\)</span>: shadow price</p>
+</section>
+<section class="slide level2">
+
+<p><span class="math inline">\(\therefore H = \text{Present Benefit + Future Benefit}\)</span></p>
+<p>Future benefit is realised at one point in time.</p>
+<p>However, present benefits are a stream of benefits.</p>
+<p>So if we have to convert <span class="math inline">\(V(\cdot)\)</span> at present time then we have to multiply it with <span class="math inline">\(e^{-rt}\)</span>, i.e.&nbsp;discounting.</p>
+</section>
+<section class="slide level2">
+
+<p><span class="math inline">\(\because H = V(\cdot) + \lambda (t)f(\cdot)\)</span></p>
+<p><span class="math inline">\(H_p = V(\cdot)e^{-rt} + \lambda (t)f(\cdot)\)</span></p>
+<p>where;</p>
+<p><span class="math inline">\(H_p\)</span>: Present Value Hamiltonian because the <strong>flow benefit</strong> is converted into stock benefit.</p>
+</section>
+<section class="slide level2">
+
+<p>Now we want to convert the sotck (one period) benefit into a stream of benefits:</p>
+<p><span class="math inline">\(H_c = V(\cdot) + \lambda (t)e^{rt}f(\cdot)\)</span></p>
+<p>where;</p>
+<p><span class="math inline">\(H_c\)</span>: Current Value Hamiltonian because the <strong>stock (one period) benefit</strong> is converted to flow benefits.</p>
+</section>
+<section class="slide level2">
+
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
@@ -915,7 +950,7 @@ F(X(T)- \lambda(T)X(T) + \lambda(0)X(0))
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'smaller': true,
+'smaller': false,
  
         // Display controls in the bottom right corner
         controls: false,

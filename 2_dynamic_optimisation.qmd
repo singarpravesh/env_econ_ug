@@ -1,9 +1,8 @@
 ---
 title: "Dynamic Optimization"
 format: 
-  revealjs:
-    smaller: true
-    slide-number: c/t
+  beamer:
+    theme: metropolis
 ---
 
 ## Why are we even discussing Dynamic Optimization (DO)?
@@ -18,14 +17,16 @@ format:
 
 - Static Optimisation
 
-\begin{align}
+\begin{align*}
 \text{max }u &= u(X,Y)\\
 \text{s.t. } P_x.X + P_y.Y &= I\\
 \text{where; }X \ \text{and}\ Y&: \text{are goods}\\
 I &: \text{income}\\
 X^* \ , \ Y^*&: \text{Solution to the optimization problem} \\
 &\quad\text{at a specific time period}
-\end{align}
+\end{align*}
+
+
 
 ---
 
@@ -38,19 +39,18 @@ X^* \ , \ Y^*&: \text{Solution to the optimization problem} \\
 - E.g. the Indian economy is deciding on optimum investment in each period for 5 years so that at the end of the $5^{th}$ year, the objective of accumulating a certain level of capital stock is realised. 
 - The cost should be minimum.
 
-## {.smaller}
+---
 
 :::: columns
 
 ::: {.column width="70%"}
+
 ```{r}
 #| echo: false
-#| out-width: "400%"
-
-
+#| out-width: "100%"
 knitr::include_graphics("images/do_state_stage_1.png")
-
 ```
+
 :::
 
 ::: {.column width="30%"}
@@ -66,7 +66,7 @@ knitr::include_graphics("images/do_state_stage_1.png")
 
 ::::
 
-## {.smaller}
+---
 
 :::: columns
 
@@ -74,14 +74,16 @@ knitr::include_graphics("images/do_state_stage_1.png")
 
 ```{r}
 #| echo: false
-#| out-width: "400%"
+#| out-width: "100%"
 
 knitr::include_graphics("images/do_paths.png")
+
 ```
 
 :::
 
 ::: {.column width="30%"}
+
 - Suppose the economy starts at $(0,A)$ and wants to reach $(T,Z)$, the decision variable will be **investment in each period**.
 - There are different paths to reach the terminal state from the initial state.
 
@@ -97,7 +99,7 @@ knitr::include_graphics("images/do_paths.png")
 
 ```{r}
 #| echo: false
-#| out-width: "400%"
+#| out-width: "100%"
 
 knitr::include_graphics("images/do_paths.png")
 ```
@@ -105,6 +107,7 @@ knitr::include_graphics("images/do_paths.png")
 :::
 
 ::: {.column width="30%"}
+
 - The question is- which path to select?
 - The initial thought might be to choose the path $A \to X$. 
 - However, the total cost along the entire path must be considered while choosing the optimal path.
@@ -120,7 +123,7 @@ knitr::include_graphics("images/do_paths.png")
 
 ```{r}
 #| echo: false
-#| out-width: "400%"
+#| out-width: "100%"
 
 knitr::include_graphics("images/do_paths_complex.png")
 ```
@@ -128,6 +131,7 @@ knitr::include_graphics("images/do_paths_complex.png")
 :::
 
 ::: {.column width="30%"}
+
 - Consider a more complex path structure.
 - Here costs (in billions of ₹) are represented in circles.
 - In this case, the path $ACEHJZ$ gives the optimal solution with $₹14$ billion as the minimum cost.
@@ -145,7 +149,7 @@ knitr::include_graphics("images/do_paths_complex.png")
 
 ```{r}
 #| echo: false
-#| out-width: "400%"
+#| out-width: "100%"
 
 knitr::include_graphics("images/do_paths_continuous.png")
 ```
@@ -153,10 +157,10 @@ knitr::include_graphics("images/do_paths_continuous.png")
 :::
 
 ::: {.column width="30%"}
+
 - This is the continuous variable version.
 - Each possible path is seen to travel through an infinite number of stages in the interval $[0, T]$.
 - E.g. to transport a load of cargo from location $A$ to $Z$ at minimum travel cost by selecting an appropriate travel path.
-
 
 :::
 
@@ -172,17 +176,19 @@ knitr::include_graphics("images/do_paths_continuous.png")
 
 :::: columns
 
-::: {.column width="60%"}
+::: {.column width="50%"}
+
 ```{r}
 #| echo: false
-#| out-width: "200%"
+#| out-width: "100%"
 
 knitr::include_graphics("images/do_functional.png")
 ```
 
 :::
 
-::: {.column width="40%"}
+::: {.column width="50%"}
+
 - A function maps elements from one set (the domain) to another set (the codomain). For example, $f(x) = x²$ maps real numbers to real numbers.
 
 - A functional, on the other hand, is a special type of function that takes another function as its input and returns a number (or more generally, a scalar value) as its output. In other words, a functional is a **"function of functions."**
@@ -208,7 +214,7 @@ knitr::include_graphics("images/do_functional.png")
     - Input: A function $f(x)$
     - Output: A non-negative real number measuring the "size" of the function
     - Example: $L₂ norm: ||f|| = √(∫|f(x)|²dx)$
-
+    
 ---
 
 - Functionals are particularly important when finding the shortest path between two points on a surface, we're actually minimizing a functional that takes a path (which is a function) as input and returns its length as output.
@@ -221,9 +227,10 @@ knitr::include_graphics("images/do_functional.png")
 :::: columns
 
 ::: {.column width="60%"}
+
 ```{r}
 #| echo: false
-#| out-width: "200%"
+#| out-width: "100%"
 
 knitr::include_graphics("images/do_variable.png")
 ```
@@ -231,6 +238,7 @@ knitr::include_graphics("images/do_variable.png")
 :::
 
 ::: {.column width="40%"}
+
 - We might apparently feel that $[0, A]$ and $[T, Z]$ are fixed. But this is not the case.
 - Either $T$ or $Z$ or both may be variable in DO.
 - There are alternatives regarding the **terminal situation**.
@@ -254,49 +262,51 @@ knitr::include_graphics("images/do_variable.png")
 
 ---
 
-
 $\therefore$ Our objective is to
 
 
-\begin{equation}
+\begin{align*}
 \text{max}_{[y(t)]} \ \int_0^T[V(y(t), X(t), t)]dt + F(X(T)) \\
-\end{equation}
+\end{align*}
 
-
-\begin{align}
+\begin{align*}
 \text{s.t.}\ \frac{d X(t)}{d t} = \dot{X}(t) &= f(y(t), X(t)) \ \to \text{equation of motion}\\
 & \qquad \qquad \qquad \qquad \text{or dynamic constraint}\\
 X(0) &= a \ \to \text{constant}
-\end{align}
+\end{align*}
 
 where;
-\begin{align}
+\begin{align*}
 F(X(T)) &: \text{scrap value which is realised at the end of the time i.e. T.}\\
 y(t) &: \text{decision variable or control variable (e.g. rate of extraction)}\\
+\end{align*}
+
+---
+
+
+\begin{align*}
 X(t) &: \text{state variable i.e. stock of resource at time t.}\\
 T &:\text{point of time when scrap value is realised.}\\
 t &: \text{continuous time}
-
-\end{align}
-  
+\end{align*}
 
 ---
 
 To maximise the objective functional we will set a Lagrangian function:
 
-\begin{align}
+\begin{align*}
 L &= \int_0^T[V(\cdot) + \lambda(t)\{f(\cdot) - \dot{X}(t)\}]dt + F(X(T))\\
   &= \int_0^T[V(\cdot) + \lambda(t)f(\cdot) - \lambda(t)\dot{X}(t)]dt + F(X(T)) \ \dots (1)
-\end{align}
+\end{align*}
 
-:::: columns
 
-::: {.column width="40%"}
 Consider;
 
-\begin{align}
+\begin{align*}
 -\int_0^T \lambda(t)\ \dot{X}(t)dt
-\end{align}
+\end{align*}
+
+---
 
 The standard integration by parts formula is:
 
@@ -304,9 +314,7 @@ The standard integration by parts formula is:
 \int u \frac{dv}{dt} dt = u \cdot v - \int v \frac{du}{dt} dt
 \end{equation}
 
-:::
 
-::: {.column width="55%"}
 Let $u = \lambda(t)$
 
 Let $dv = \dot{X}(t)dt$
@@ -316,49 +324,55 @@ $\frac{du}{dt} = \dot{\lambda}(t)$
 
 $v = X(t)$
 
-\begin{align}
+\begin{align*}
 -\int_0^T \lambda(t)\ \dot{X}(t)dt &= -[\lambda(t)X(t)]_0^T + \int_0^T X(t)\dot{\lambda}(t)dt \\
 &= -\lambda(T)X(T) + \lambda(0)X(0) + \int_0^T X(t)\dot{\lambda}(t)dt\\
-\end{align}
+\end{align*}
 
-:::
 
-::::
 
 
 ---
 
-\begin{align}
+\begin{align*}
 \therefore -\int_0^T \lambda(t)\ \dot{X}(t)dt &= -[\lambda(t)X(t)]_0^T + \int_0^T X(t)\dot{\lambda}(t)dt \\
-&= -\lambda(T)X(T) + \lambda(0)X(0) + \int_0^T X(t)\dot{\lambda}(t)dt \ \dots (2)
-\end{align}
+&= -\lambda(T)X(T) + \lambda(0)X(0) + \\
+& \quad \quad \int_0^T X(t)\dot{\lambda}(t)dt \ \dots (2)
+\end{align*}
 
 Recall;
 
-\begin{align}
+\begin{align*}
 L &= \int_0^T[V(\cdot) + \lambda(t)f(\cdot) - \lambda(t)\dot{X}(t)]dt + F(X(T))\ \dots (1)
-\end{align}
+\end{align*}
+
+---
 
 Substituting the result from equation (2):
 
-\begin{align}
-L &= \int_0^T[V(\cdot) + \lambda(t)f(\cdot)]dt - \lambda(T)X(T) + \lambda(0)X(0) + \int_0^T X(t)\dot{\lambda}(t)dt + F(X(T)) \ \dots (3)
-\end{align}
+\begin{align*}
+L &= \int_0^T[V(\cdot) + \lambda(t)f(\cdot)]dt - \lambda(T)X(T) + \lambda(0)X(0) + \\
+& \quad \quad \int_0^T X(t)\dot{\lambda}(t)dt + F(X(T)) \ \dots (3)
+\end{align*}
 
 ---
 
 Let us define
-
-\begin{align}
+\begin{align*}
 H &= V(\cdot) + \lambda(t)f(\cdot) \\
 \implies H &= H(y(t), X(t), \lambda(t), t)
-\end{align}
+\end{align*}
 
-\begin{align}
-\therefore L &= \int_0^T[H(\cdot)]dt - \lambda(T)X(T) + \lambda(0)X(0) + \int_0^T X(t)\dot{\lambda}(t)dt + F(X(T)) \\
-&= \int_0^T[H(\cdot)]dt  + \int_0^T X(t)\dot{\lambda}(t)dt + F(X(T)- \lambda(T)X(T) + \lambda(0)X(0)) \\
-&= \int_0^T\left[H(\cdot)  + X(t)\dot{\lambda}(t)\right]dt + F(X(T)- \lambda(T)X(T) + \lambda(0)X(0))
-\end{align}
+\begin{align*}
+\therefore L &= \int_0^T[H(\cdot)]dt - \lambda(T)X(T) + \lambda(0)X(0) + \\
+& \quad \quad \int_0^T X(t)\dot{\lambda}(t)dt + F(X(T)) \\
+&= \int_0^T[H(\cdot)]dt  + \int_0^T X(t)\dot{\lambda}(t)dt + \\ & \quad \quad F(X(T)- \lambda(T)X(T) + \lambda(0)X(0)) \\
+&= \int_0^T\left[H(\cdot)  + X(t)\dot{\lambda}(t)\right]dt + \\ & \quad \quad F(X(T)- \lambda(T)X(T) + \lambda(0)X(0))
+\end{align*}
+
+
+---
+
 
 We want to optimize $L$ by chosing $y(t)$ the control variable.
 
@@ -391,19 +405,18 @@ where:
 The **Hamiltonian** is named after **Sir William Rowan Hamilton**, who developed **Hamiltonian mechanics** in the 19th century. Originally, it was used in **classical mechanics** to describe the total energy of a system:
 
 In Physics
-
-\begin{align}
+\begin{align*}
 H &= T(q, p, t) + V(q, t) \\
 \implies \text{Total Energy} &= \text{Kinetic Energy} + \text{Potential Energy}
-\end{align}
+\end{align*}
 
 
 And in Economics
-
-\begin{align}
+\begin{align*}
 H &= V(y(t), X(t), t) + \lambda(t)f(y(t), X(t)) \\ 
-\implies \text{Total Benefits or Costs} &= \text{Flow Benefit or Costs} + \text{Stock Benefit or Costs}
-\end{align}
+\implies \text{Total Benefits or Costs} &= \text{Flow Benefit or Costs} + \\
+& \quad \quad \text{Stock Benefit or Costs}
+\end{align*}
 
 
 
@@ -442,7 +455,7 @@ $$
 \Delta (X(t) \dot{\lambda}(t)) = \dot{\lambda}(t) \Delta X(t)
 $$
 
-
+---
 
 
 $$
@@ -452,8 +465,6 @@ $$
 \dot{\lambda}(t) \Delta X(t)
 \right] dt
 $$
-
-
 
 
 ## Step 2.2: Variation of the Terminal Function $F(\cdot)$ {.smaller}
@@ -482,14 +493,14 @@ $$
 
 Now, combining everything:
 
-$$
+\begin{align*}
 \Delta L = \int_0^T\left[ 
 \frac{\partial H}{\partial y(t)}\Delta y(t) +
 \frac{\partial H}{\partial X(t)}\Delta X(t) +
 \dot{\lambda}(t) \Delta X(t)
-\right]dt
+\right]dt \\
 + \frac{\partial F}{\partial X(T)}\Delta X(T) - \lambda(T)\Delta X(T)
-$$
+\end{align*}
 
 
 
@@ -497,21 +508,29 @@ $$
 
 For optimization **$\Delta L = 0$**, we analyze:
 
-$$\Delta L = \int_0^T\left[ 
+\begin{align*}
+\Delta L = \int_0^T\left[ 
 \frac{\partial H}{\partial y(t)}\Delta y(t) +
 \frac{\partial H}{\partial X(t)}\Delta X(t) +
 \dot{\lambda}(t) \Delta X(t)
-\right]dt
-+ \frac{\partial F}{\partial X(T)}\Delta X(T) - \lambda(T)\Delta X(T)$$
+\right]dt \\
+ + \frac{\partial F}{\partial X(T)}\Delta X(T) - \lambda(T)\Delta X(T)
+\end{align*}
+
+
+---
+
 
 Rearranging;
 
-$$\Delta L = \int_0^T\left[ 
+\begin{align*}
+\Delta L = \int_0^T\left[ 
 \frac{\partial H}{\partial y(t)}\Delta y(t) +
 \left(\frac{\partial H}{\partial X(t)} +
 \dot{\lambda}(t)\right)\Delta X(t)
-\right]dt
-+ \left(\frac{\partial F}{\partial X(T)} - \lambda(T)\right)\Delta X(T)$$
+\right]dt \\
++ \left(\frac{\partial F}{\partial X(T)} - \lambda(T)\right)\Delta X(T)
+\end{align*}
 
 Since **$\Delta L = 0$** must hold for any small variations **$\Delta X(t)$** and **$\Delta y(t)$**, each coefficient must be zero.
 
@@ -525,31 +544,38 @@ $$\frac{\partial H}{\partial y(t)} = 0$$
 
 This is the **control optimality condition**, ensuring that the Hamiltonian is optimized with respect to the control $y(t)$.
 
----
+
 
 ##  Principle 2
 
 From the integral term:
 
-$$\left[\frac{\partial H}{\partial X(t)} + \dot{\lambda}(t)\right] \Delta X(t)$$
+$$
+\left[\frac{\partial H}{\partial X(t)} + \dot{\lambda}(t)\right] \Delta X(t)
+$$
 
 For arbitrary $\Delta X(t)$, we get:
 
-$$\dot{\lambda}(t) = -\frac{\partial H}{\partial X(t)}$$
+$$
+\dot{\lambda}(t) = -\frac{\partial H}{\partial X(t)}
+$$
 
 This is the **co-state equation**, governing the evolution of the costate $\lambda(t)$.
 
----
 
 ## Principle 3
 
 From the terminal variation term:
 
-$$\left[\frac{\partial F}{\partial X(T)} - \lambda(T)\right] \Delta X(T)$$
+$$
+\left[\frac{\partial F}{\partial X(T)} - \lambda(T)\right] \Delta X(T)
+$$
 
 For arbitrary $\Delta X(T)$, we get:
 
-$$\lambda(T) = \frac{\partial F}{\partial X(T)}$$
+$$
+\lambda(T) = \frac{\partial F}{\partial X(T)}
+$$
 
 This is setting the final value of the costate.
 
@@ -574,6 +600,7 @@ These are the necessary conditions from **Pontryagin's Maximum Principle**.
 
 - Pontryagin's Maximum Principle is named after the Russian mathematician Lev Pontryagin, who formulated this principle in 1956 along with his students. 
 - The principle was initially developed to solve optimization problems in control theory, specifically for maximizing the terminal speed of a rocket.
+
 
 ---
 
@@ -623,6 +650,97 @@ $$\lambda(T)=\frac{\partial F}{\partial X(T)}$$
 - Ensures that **future benefits of conservation** are included in today’s decisions.
 
 
+---
+
+Recall,
+
+$$
+H = V(\cdot) + \lambda (t)f(\cdot)
+$$
+
+where;
+
+$V(\cdot)$: flow benefit
+
+$\lambda (t)f(\cdot)$: future benefit or value
+
+$\lambda (t)$: shadow price
+
+---
+
+$\therefore H = \text{Present Benefit + Future Benefit}$
+
+Future benefit is realised at one point in time.
+
+However, present benefits are a stream of benefits.
+
+So if we have to convert $V(\cdot)$ at present time then we have to multiply it with $e^{-rt}$, i.e. discounting.
+
+---
+
+$\because H = V(\cdot) + \lambda (t)f(\cdot)$
+
+$H_p = V(\cdot)e^{-rt} + \lambda (t)f(\cdot)$
+
+where;
+
+$H_p$: Present Value Hamiltonian because the **flow benefit** is converted into stock benefit.
+
+---
+
+Now we want to convert the sotck (one period) benefit into a stream of benefits:
+
+$H_c = V(\cdot) + \lambda (t)e^{rt}f(\cdot)$
+
+where;
+
+$H_c$: Current Value Hamiltonian because the **stock (one period) benefit** is converted to flow benefits.
+
+---
+
+Let's assume
 
 
+\begin{align*}
+\lambda(t)e^{rt} &= \rho (t)\\
+\implies \lambda(t) &= \rho(t) e^{-rt} \\
+\implies \dot{\lambda}(t) &= \dot{\rho}(t) e^{-rt} - r\rho(t)e^{-rt}\\
+\implies \dot{\lambda}(t)e^{rt} &= \dot{\rho}(t)  - r\rho(t)\\ 
+\implies \dot{\rho}(t) &= \dot{\lambda}(t)e^{rt} + r\rho(t)
+\end{align*}
+
+
+
+where,
+
+$\rho(t)$: current value of the co-state variable $\lambda(t)$
+
+---
+
+Intuition:
+
+The idea behind $H_p$ and $H_c$ is that we are representing two types of benefits that we can actually get from a NRR.
+
+These benefits could be flow or stock; and in the Hamiltonian we have converted either of the benefits (flow or stock) to arrive at a single benefit (present value) or stream of benefits (current value).
+
+---
+
+Maximizing total (flow + stock) benefits requires
+\begin{align*}
+\frac{\partial H_p}{\partial y(t)} &= 0 \\
+\implies \frac{\partial [V(\cdot)e^{-rt} + \lambda(t) f(\cdot)]}{\partial y(t)} &= 0 \\
+\implies \frac{\partial V(\cdot)}{\partial y(t)}e^{rt} + \lambda (t)\frac{\partial f(\cdot)}{\partial y(t)} &= 0
+\end{align*}
+
+---
+
+We also know that one of the conditions of the maximum principle is;
+\begin{align*}
+\dot{\lambda}(t) &= - \frac{\partial H_p(\cdot)}{\partial X(t)}\\
+\implies \dot{\lambda}(t) e^{rt} &= - \frac{\partial H_p(\cdot)}{\partial X(t)}e^{rt}\\
+\implies \dot{\rho}(t) -r\rho(t) &= - \frac{\partial H_c(\cdot)}{\partial X(t)}  [\because \dot{\rho}(t)=\dot{\lambda}(t) e^{r t}+r p(t)] \\
+\implies \dot{\rho}(t) &= r\rho(t) - \frac{\partial H_c(\cdot)}{\partial X(t)}
+\end{align*}
+
+---
 
